@@ -411,7 +411,17 @@ footer {
         <div id="messageQuiz" class="result"></div>
     </div>
 </section>
+<section id="pageQuiz" class="page">
 
+    <div class="card">
+
+        <h2>🧠 Mon Quiz</h2>
+
+        <div id="zoneQuestionQuiz"></div>
+
+    </div>
+
+</section>
 <section id="calendrier" class="page">
     <div class="card">
         <h2>📅 Calendrier</h2>
@@ -1082,8 +1092,9 @@ function commencerQuiz() {
 
     document.getElementById("messageQuiz").innerHTML = "";
 
-    afficherQuestionQuiz();
-}
+showPage("pageQuiz");
+
+afficherQuestionQuiz();
 
 
 // ===============================
@@ -1092,16 +1103,7 @@ function commencerQuiz() {
 
 function afficherQuestionQuiz() {
 
-    let zone = document.getElementById("zoneQuestionQuiz");
-
-    if (!zone) {
-
-        zone = document.createElement("div");
-
-        zone.id = "zoneQuestionQuiz";
-
-        document.querySelector("#quiz .card").appendChild(zone);
-    }
+   let zone = document.getElementById("zoneQuestionQuiz");
 
     if (quizIndex >= quizQuestions.length) {
         terminerQuiz();
@@ -1218,8 +1220,7 @@ function terminerQuiz() {
                 🌸 Score : <strong>${pourcentage}%</strong>
             </p>
 
-            <button type="button" class="action"
-onclick="document.getElementById('messageQuiz').innerHTML='✅ Le bouton fonctionne !'">
+            <button class="action" onclick="commencerQuiz()">
     🚀 Commencer le quiz
 </button>
                 🔄 Recommencer
