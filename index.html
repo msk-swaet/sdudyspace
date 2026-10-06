@@ -347,15 +347,78 @@ footer {
 </section>
 <section id="quiz" class="page">
     <div class="card">
-        <h2>🧠 Petit quiz</h2>
+        <h2>🧠 Quiz StudySpace</h2>
 
-        <p><strong>Quelle est la capitale du Sénégal ?</strong></p>
+        <p>Choisis ta classe pour voir les matières disponibles ✨</p>
 
-        <button class="quiz-option" onclick="verifierQuiz(false)">A. Thiès</button>
-        <button class="quiz-option" onclick="verifierQuiz(true)">B. Dakar</button>
-        <button class="quiz-option" onclick="verifierQuiz(false)">C. Saint-Louis</button>
+        <label>🎓 Classe</label>
+        <select id="classeQuiz" onchange="mettreAJourMatieres()">
+            <option value="">-- Choisir ta classe --</option>
+            <option value="6e">6e</option>
+            <option value="5e">5e</option>
+            <option value="4e">4e</option>
+            <option value="3e">3e</option>
+            <option value="2nde">2nde</option>
+            <option value="1ere">1ère</option>
+            <option value="terminale">Terminale</option>
+        </select>
 
-        <div id="resultatQuiz" class="result"></div>
+        <label>📚 Matière</label>
+        <select id="matiereQuiz">
+            <option value="">-- Choisir d'abord une classe --</option>
+        </select>
+
+        <label>🎯 Niveau</label>
+        <select id="niveauQuiz">
+            <option value="">-- Choisir un niveau --</option>
+            <option value="facile">🟢 Facile</option>
+            <option value="moyen">🟡 Moyen</option>
+            <option value="difficile">🔴 Difficile</option>
+        </select>
+
+        <button class="action" onclick="commencerQuiz()">
+            🚀 Commencer le quiz
+        </button>
+
+        <div id="messageQuiz" class="result"></div>
+    </div>
+</section>
+    <section id="quiz" class="page">
+    <div class="card">
+        <h2>🧠 Quiz StudySpace</h2>
+
+        <p>Choisis ta classe pour voir les matières disponibles ✨</p>
+
+        <label>🎓 Classe</label>
+        <select id="classeQuiz" onchange="mettreAJourMatieres()">
+            <option value="">-- Choisir ta classe --</option>
+            <option value="6e">6e</option>
+            <option value="5e">5e</option>
+            <option value="4e">4e</option>
+            <option value="3e">3e</option>
+            <option value="2nde">2nde</option>
+            <option value="1ere">1ère</option>
+            <option value="terminale">Terminale</option>
+        </select>
+
+        <label>📚 Matière</label>
+        <select id="matiereQuiz">
+            <option value="">-- Choisir d'abord une classe --</option>
+        </select>
+
+        <label>🎯 Niveau</label>
+        <select id="niveauQuiz">
+            <option value="">-- Choisir un niveau --</option>
+            <option value="facile">🟢 Facile</option>
+            <option value="moyen">🟡 Moyen</option>
+            <option value="difficile">🔴 Difficile</option>
+        </select>
+
+        <button class="action" onclick="commencerQuiz()">
+            🚀 Commencer le quiz
+        </button>
+
+        <div id="messageQuiz" class="result"></div>
     </div>
 </section>
 
@@ -550,7 +613,98 @@ function ajouterEvenement() {
     document.getElementById("date").value = "";
     document.getElementById("evenement").value = "";
 }
+const matieresParClasse = {
 
+    "6e": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire",
+        "Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Éducation Civique"
+    ],
+
+    "5e": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire",
+        "Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Éducation Civique"
+    ],
+
+    "4e": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire",
+        "Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Éducation Civique"
+    ],
+
+    "3e": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire",
+        "Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Éducation Civique"
+    ],
+
+    "2nde": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire-Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Physique-Chimie"
+    ],
+
+    "1ere": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire-Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Physique-Chimie"
+    ],
+
+    "terminale": [
+        "Mathématiques",
+        "Français",
+        "Anglais",
+        "Histoire-Géographie",
+        "Sciences de la Vie et de la Terre",
+        "Physique-Chimie"
+    ]
+};
+
+
+function mettreAJourMatieres() {
+
+    let classe = document.getElementById("classeQuiz").value;
+    let selectMatiere = document.getElementById("matiereQuiz");
+
+    selectMatiere.innerHTML =
+        '<option value="">-- Choisir une matière --</option>';
+
+    if (matieresParClasse[classe]) {
+
+        matieresParClasse[classe].forEach(function(matiere) {
+
+            let option = document.createElement("option");
+
+            option.value = matiere;
+            option.textContent = matiere;
+
+            selectMatiere.appendChild(option);
+        });
+    }
+}
 </script>
 
 </body>
