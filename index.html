@@ -776,6 +776,460 @@ function ajouterMatiereQuiz() {
 
         selectMatiere.value = nouvelleMatiere.trim();
     }
+    // ===============================
+// 🧠 MOTEUR DU QUIZ STUDYSPACE
+// ===============================
+
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+
+
+// Banque de questions - 4e
+const banqueQuestions = {
+
+    "4e": {
+
+        "Mathématiques": [
+            {
+                question: "Résous : 3x + 4 = 19",
+                options: ["3", "5", "7", "9"],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Calcule : 2/3 + 1/6",
+                options: ["3/9", "4/6", "5/6", "1"],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Un triangle a une base de 8 cm et une hauteur de 5 cm. Quelle est son aire ?",
+                options: ["13 cm²", "20 cm²", "40 cm²", "16 cm²"],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
+        "Français": [
+            {
+                question: "Dans « Awa lit un livre », quel est le COD ?",
+                options: ["Awa", "lit", "un livre", "aucun"],
+                reponse: 2,
+                niveau: "facile"
+            },
+            {
+                question: "Dans « Il parle rapidement », quelle est la nature de « rapidement » ?",
+                options: ["Nom", "Adjectif", "Adverbe", "Verbe"],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Quelle phrase est à la voix passive ?",
+                options: [
+                    "Le professeur explique la leçon.",
+                    "La leçon est expliquée par le professeur.",
+                    "Le professeur explique bien.",
+                    "Les élèves étudient."
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
+        "Anglais": [
+            {
+                question: "What is the past tense of « go » ?",
+                options: ["goed", "went", "gone", "going"],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Choose the correct answer: She ___ playing football.",
+                options: ["am", "are", "is", "be"],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "What does « I have two brothers » mean?",
+                options: [
+                    "J'ai deux sœurs.",
+                    "J'ai deux frères.",
+                    "J'ai trois frères.",
+                    "Je suis un frère."
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
+        "Histoire": [
+            {
+                question: "La conférence de Berlin sur le partage de l'Afrique a eu lieu en…",
+                options: ["1789", "1848", "1884-1885", "1914"],
+                reponse: 2,
+                niveau: "facile"
+            },
+            {
+                question: "En quelle année l'esclavage a-t-il été définitivement aboli dans les colonies françaises ?",
+                options: ["1789", "1848", "1900", "1960"],
+                reponse: 1,
+                niveau: "moyen"
+            },
+            {
+                question: "Le Sénégal accède à l'indépendance en…",
+                options: ["1945", "1958", "1960", "1975"],
+                reponse: 2,
+                niveau: "difficile"
+            }
+        ],
+
+        "Géographie": [
+            {
+                question: "Le Sahel est situé entre…",
+                options: [
+                    "Le Sahara et les régions plus humides du sud",
+                    "L'océan et l'Europe",
+                    "L'Asie et l'Afrique",
+                    "Les pôles"
+                ],
+                reponse: 0,
+                niveau: "facile"
+            },
+            {
+                question: "Quelle est la capitale du Sénégal ?",
+                options: ["Thiès", "Saint-Louis", "Dakar", "Ziguinchor"],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Quel océan borde le Sénégal à l'ouest ?",
+                options: [
+                    "Océan Indien",
+                    "Océan Atlantique",
+                    "Océan Pacifique",
+                    "Océan Arctique"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
+        "SVT": [
+            {
+                question: "Quel organe permet principalement les échanges gazeux chez l'être humain ?",
+                options: ["Le cœur", "Les poumons", "L'estomac", "Le foie"],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Quel élément du sang transporte principalement l'oxygène ?",
+                options: ["Les globules rouges", "Les plaquettes", "Le plasma", "Les globules blancs"],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "La photosynthèse nécessite notamment de la lumière, de l'eau et…",
+                options: [
+                    "Du dioxyde de carbone",
+                    "Du sel",
+                    "Du fer",
+                    "De l'azote pur"
+                ],
+                reponse: 0,
+                niveau: "difficile"
+            }
+        ],
+
+        "Éducation civique": [
+            {
+                question: "Le vote est principalement…",
+                options: [
+                    "Une activité sportive",
+                    "Un droit et un acte citoyen",
+                    "Une obligation scolaire",
+                    "Un loisir"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "La Constitution sert notamment à…",
+                options: [
+                    "Organiser les institutions de l'État",
+                    "Fixer le prix du pain",
+                    "Choisir les uniformes scolaires",
+                    "Déterminer la météo"
+                ],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "L'égalité devant la loi signifie que…",
+                options: [
+                    "Certaines personnes sont au-dessus des lois",
+                    "Tous sont soumis aux mêmes règles de droit",
+                    "Seuls les adultes ont des droits",
+                    "Les lois changent selon les personnes"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
+        "Technologie": [
+            {
+                question: "Quel appareil permet de mesurer une température ?",
+                options: ["Une balance", "Un thermomètre", "Une règle", "Un voltmètre"],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Quel élément transforme l'énergie électrique en lumière dans une lampe ?",
+                options: ["La source lumineuse", "Le téléphone", "Le câble USB", "Le clavier"],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "Dans un circuit électrique simple, quel élément permet généralement d'ouvrir ou fermer le circuit ?",
+                options: ["L'interrupteur", "La pile", "L'ampoule", "Le fil uniquement"],
+                reponse: 0,
+                niveau: "difficile"
+            }
+        ],
+
+        "Économie familiale": [
+            {
+                question: "Un repas équilibré doit être…",
+                options: [
+                    "Très sucré uniquement",
+                    "Varié et adapté aux besoins du corps",
+                    "Composé seulement de viande",
+                    "Composé seulement de boissons"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Pourquoi faut-il se laver les mains avant de préparer un repas ?",
+                options: [
+                    "Pour décorer les mains",
+                    "Pour réduire les microbes et les contaminations",
+                    "Pour avoir les mains froides",
+                    "Pour gagner du temps"
+                ],
+                reponse: 1,
+                niveau: "moyen"
+            },
+            {
+                question: "Quel comportement favorise une bonne conservation des aliments ?",
+                options: [
+                    "Laisser tous les aliments au soleil",
+                    "Respecter les conditions de conservation",
+                    "Mélanger aliments crus et cuits",
+                    "Ignorer les dates de péremption"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ]
+
+    }
+};
+
+
+// ===============================
+// 🚀 COMMENCER LE QUIZ
+// ===============================
+
+function commencerQuiz() {
+
+    let classe = document.getElementById("classeQuiz").value;
+    let matiere = document.getElementById("matiereQuiz").value;
+    let niveau = document.getElementById("niveauQuiz").value;
+
+    if (classe === "" || matiere === "" || niveau === "") {
+
+        document.getElementById("messageQuiz").innerHTML =
+            "⚠️ Choisis ta classe, ta matière et ton niveau.";
+
+        return;
+    }
+
+    let questionsDisponibles =
+        banqueQuestions[classe] &&
+        banqueQuestions[classe][matiere]
+            ? banqueQuestions[classe][matiere]
+            : [];
+
+    if (questionsDisponibles.length === 0) {
+
+        document.getElementById("messageQuiz").innerHTML =
+            "📚 Les questions de cette matière sont encore en préparation.";
+
+        return;
+    }
+
+    // On privilégie le niveau choisi
+    let questionsNiveau = questionsDisponibles.filter(
+        question => question.niveau === niveau
+    );
+
+    // S'il n'y en a pas assez, on utilise toutes les questions
+    if (questionsNiveau.length === 0) {
+        questionsNiveau = questionsDisponibles;
+    }
+
+    quizQuestions = [...questionsNiveau]
+        .sort(() => Math.random() - 0.5);
+
+    quizIndex = 0;
+    quizScore = 0;
+
+    document.getElementById("messageQuiz").innerHTML = "";
+
+    afficherQuestionQuiz();
+}
+
+
+// ===============================
+// 📖 AFFICHER UNE QUESTION
+// ===============================
+
+function afficherQuestionQuiz() {
+
+    let zone = document.getElementById("zoneQuestionQuiz");
+
+    if (!zone) {
+
+        zone = document.createElement("div");
+
+        zone.id = "zoneQuestionQuiz";
+
+        document.querySelector("#quiz .card").appendChild(zone);
+    }
+
+    if (quizIndex >= quizQuestions.length) {
+        terminerQuiz();
+        return;
+    }
+
+    let question = quizQuestions[quizIndex];
+
+    let html = `
+        <div class="card">
+            <h3>Question ${quizIndex + 1} / ${quizQuestions.length}</h3>
+
+            <p>
+                <strong>${question.question}</strong>
+            </p>
+    `;
+
+    question.options.forEach((option, index) => {
+
+        html += `
+            <button
+                class="action reponseQuiz"
+                onclick="repondreQuiz(${index})"
+            >
+                ${option}
+            </button>
+        `;
+
+    });
+
+    html += `
+            <div id="feedbackQuiz" class="result"></div>
+        </div>
+    `;
+
+    zone.innerHTML = html;
+}
+
+
+// ===============================
+// ✅ VÉRIFIER LA RÉPONSE
+// ===============================
+
+function repondreQuiz(index) {
+
+    let question = quizQuestions[quizIndex];
+
+    let boutons = document.querySelectorAll(".reponseQuiz");
+
+    boutons.forEach(button => {
+        button.disabled = true;
+    });
+
+    let feedback = document.getElementById("feedbackQuiz");
+
+    if (index === question.reponse) {
+
+        quizScore++;
+
+        feedback.innerHTML =
+            "🎉 Bonne réponse !";
+
+    } else {
+
+        feedback.innerHTML =
+            "❌ Mauvaise réponse.<br>" +
+            "La bonne réponse était : <strong>" +
+            question.options[question.reponse] +
+            "</strong>";
+    }
+
+    feedback.innerHTML += `
+        <br><br>
+        <button class="action" onclick="questionSuivante()">
+            ➡️ Question suivante
+        </button>
+    `;
+}
+
+
+// ===============================
+// ➡️ QUESTION SUIVANTE
+// ===============================
+
+function questionSuivante() {
+
+    quizIndex++;
+
+    afficherQuestionQuiz();
+}
+
+
+// ===============================
+// 🏆 FIN DU QUIZ
+// ===============================
+
+function terminerQuiz() {
+
+    let zone = document.getElementById("zoneQuestionQuiz");
+
+    let pourcentage =
+        Math.round((quizScore / quizQuestions.length) * 100);
+
+    zone.innerHTML = `
+        <div class="card">
+            <h3>🏆 Quiz terminé !</h3>
+
+            <p>
+                Tu as obtenu
+                <strong>${quizScore} / ${quizQuestions.length}</strong>
+            </p>
+
+            <p>
+                🌸 Score : <strong>${pourcentage}%</strong>
+            </p>
+
+            <button class="action" onclick="commencerQuiz()">
+                🔄 Recommencer
+            </button>
+        </div>
+    `;
+}
 }    
 </script>
 
