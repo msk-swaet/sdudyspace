@@ -330,13 +330,21 @@ footer {
     <div class="card">
         <h2>✅ Mes tâches</h2>
 
-        <input type="text" id="nouvelleTache" placeholder="Ex : Faire les exercices de maths">
-        <button class="action" onclick="ajouterTache()">Ajouter ➕</button>
+        <p>Organise tes devoirs et tes petites missions scolaires ✨</p>
+
+        <input
+            type="text"
+            id="nouvelleTache"
+            placeholder="Ex : Faire les exercices de maths"
+        >
+
+        <button class="action" onclick="ajouterTache()">
+            ➕ Ajouter une tâche
+        </button>
 
         <div id="listeTaches"></div>
     </div>
 </section>
-
 <section id="quiz" class="page">
     <div class="card">
         <h2>🧠 Petit quiz</h2>
@@ -480,20 +488,39 @@ function ajouterTache() {
     let tache = document.getElementById("nouvelleTache").value;
 
     if (tache.trim() === "") {
+        alert("⚠️ Écris une tâche !");
         return;
     }
 
     let element = document.createElement("div");
     element.className = "task";
 
-    element.innerHTML =
-        '<input type="checkbox"> <span>' + tache + '</span>';
+    element.innerHTML = `
+        <input type="checkbox" onchange="terminerTache(this)">
+        <span>${tache}</span>
+        <button onclick="supprimerTache(this)">🗑️</button>
+    `;
 
     document.getElementById("listeTaches").appendChild(element);
 
     document.getElementById("nouvelleTache").value = "";
 }
 
+function terminerTache(checkbox) {
+    let texte = checkbox.nextElementSibling;
+
+    if (checkbox.checked) {
+        texte.style.textDecoration = "line-through";
+        texte.style.opacity = "0.5";
+    } else {
+        texte.style.textDecoration = "none";
+        texte.style.opacity = "1";
+    }
+}
+
+function supprimerTache(bouton) {
+    bouton.parentElement.remove();
+}
 function verifierQuiz(correct) {
     if (correct) {
         document.getElementById("resultatQuiz").innerHTML =
