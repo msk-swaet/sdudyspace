@@ -387,10 +387,10 @@ footer {
     <div class="card">
         <h2>🧠 Quiz StudySpace</h2>
 
-        <p>Choisis ta classe pour voir les matières disponibles ✨</p>
+        <p>Configure ton quiz selon ton parcours scolaire ✨</p>
 
         <label>🎓 Classe</label>
-        <select id="classeQuiz" onchange="mettreAJourMatieres()">
+        <select id="classeQuiz" onchange="mettreAJourEtablissement()">
             <option value="">-- Choisir ta classe --</option>
             <option value="6e">6e</option>
             <option value="5e">5e</option>
@@ -401,6 +401,48 @@ footer {
             <option value="terminale">Terminale</option>
         </select>
 
+        <div id="choixEtablissement" style="display:none;">
+            <label>🏫 Type d'établissement</label>
+            <select id="typeEtablissement" onchange="mettreAJourParcours()">
+                <option value="">-- Choisir --</option>
+                <option value="public">Public</option>
+                <option value="prive">Privé</option>
+                <option value="priveBilingue">Privé bilingue</option>
+                <option value="francoArabe">Franco-arabe</option>
+            </select>
+        </div>
+
+        <div id="choixParcours" style="display:none;">
+            <label>🔬 Bloc / parcours</label>
+            <select id="parcoursQuiz" onchange="mettreAJourMatieres()">
+                <option value="">-- Choisir --</option>
+            </select>
+        </div>
+
+        <label>📚 Matière</label>
+        <select id="matiereQuiz">
+            <option value="">-- Choisir d'abord ton parcours --</option>
+        </select>
+
+        <button class="action" onclick="ajouterMatiereQuiz()">
+            ➕ Ajouter une matière
+        </button>
+
+        <label>🎯 Niveau</label>
+        <select id="niveauQuiz">
+            <option value="">-- Choisir un niveau --</option>
+            <option value="facile">🟢 Facile</option>
+            <option value="moyen">🟡 Moyen</option>
+            <option value="difficile">🔴 Difficile</option>
+        </select>
+
+        <button class="action" onclick="commencerQuiz()">
+            🚀 Commencer le quiz
+        </button>
+
+        <div id="messageQuiz" class="result"></div>
+    </div>
+</section>
         <label>📚 Matière</label>
         <select id="matiereQuiz">
             <option value="">-- Choisir d'abord une classe --</option>
@@ -613,98 +655,173 @@ function ajouterEvenement() {
     document.getElementById("date").value = "";
     document.getElementById("evenement").value = "";
 }
-const matieresParClasse = {
+const matieresBase = {
 
     "6e": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire",
         "Géographie",
-        "Sciences de la Vie et de la Terre",
-        "Éducation Civique"
+        "SVT",
+        "Éducation civique"
     ],
 
     "5e": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire",
         "Géographie",
-        "Sciences de la Vie et de la Terre",
-        "Éducation Civique"
+        "SVT",
+        "Éducation civique"
     ],
 
     "4e": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire",
         "Géographie",
-        "Sciences de la Vie et de la Terre",
-        "Éducation Civique"
+        "SVT",
+        "Éducation civique"
     ],
 
     "3e": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire",
         "Géographie",
-        "Sciences de la Vie et de la Terre",
-        "Éducation Civique"
+        "SVT",
+        "Éducation civique"
     ],
 
     "2nde": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire-Géographie",
-        "Sciences de la Vie et de la Terre",
+        "SVT",
         "Physique-Chimie"
     ],
 
     "1ere": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire-Géographie",
-        "Sciences de la Vie et de la Terre",
+        "SVT",
         "Physique-Chimie"
     ],
 
     "terminale": [
-        "Mathématiques",
         "Français",
+        "Mathématiques",
         "Anglais",
         "Histoire-Géographie",
-        "Sciences de la Vie et de la Terre",
+        "SVT",
         "Physique-Chimie"
     ]
 };
 
 
+function mettreAJourEtablissement() {
+
+    let classe = document.getElementById("classeQuiz").value;
+    let choix = document.getElementById("choixEtablissement");
+
+    if (classe !== "") {
+        choix.style.display = "block";
+    } else {
+        choix.style.display = "none";
+    }
+
+    document.getElementById("choixParcours").style.display = "none";
+
+    document.getElementById("matiereQuiz").innerHTML =
+        '<option value="">-- Choisir d\'abord ton parcours --</option>';
+}
+
+
+function mettreAJourParcours() {
+
+    let type = document.getElementById("typeEtablissement").value;
+    let choixParcours = document.getElementById("choixParcours");
+    let parcours = document.getElementById("parcoursQuiz");
+
+    parcours.innerHTML =
+        '<option value="">-- Choisir --</option>';
+
+    if (type === "") {
+        choixParcours.style.display = "none";
+        return;
+    }
+
+    choixParcours.style.display = "block";
+
+    parcours.innerHTML += `
+        <option value="classique">🏫 Parcours classique</option>
+        <option value="bst">🔬 Bloc scientifique et technologique</option>
+        <option value="personnalise">✏️ Parcours personnalisé</option>
+    `;
+}
+
+
 function mettreAJourMatieres() {
 
     let classe = document.getElementById("classeQuiz").value;
+    let parcours = document.getElementById("parcoursQuiz").value;
     let selectMatiere = document.getElementById("matiereQuiz");
 
     selectMatiere.innerHTML =
         '<option value="">-- Choisir une matière --</option>';
 
-    if (matieresParClasse[classe]) {
-
-        matieresParClasse[classe].forEach(function(matiere) {
-
-            let option = document.createElement("option");
-
-            option.value = matiere;
-            option.textContent = matiere;
-
-            selectMatiere.appendChild(option);
-        });
+    if (!matieresBase[classe]) {
+        return;
     }
+
+    let matieres = [...matieresBase[classe]];
+
+    if (parcours === "bst") {
+
+        matieres.push("Technologie");
+        matieres.push("Économie familiale");
+
+    }
+
+    matieres.forEach(function(matiere) {
+
+        let option = document.createElement("option");
+
+        option.value = matiere;
+        option.textContent = matiere;
+
+        selectMatiere.appendChild(option);
+    });
 }
+
+
+function ajouterMatiereQuiz() {
+
+    let nouvelleMatiere = prompt(
+        "📚 Écris le nom de la matière à ajouter :"
+    );
+
+    if (nouvelleMatiere && nouvelleMatiere.trim() !== "") {
+
+        let selectMatiere = document.getElementById("matiereQuiz");
+
+        let option = document.createElement("option");
+
+        option.value = nouvelleMatiere.trim();
+        option.textContent = "✏️ " + nouvelleMatiere.trim();
+
+        selectMatiere.appendChild(option);
+
+        selectMatiere.value = nouvelleMatiere.trim();
+    }
+}    
 </script>
 
 </body>
