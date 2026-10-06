@@ -406,9 +406,6 @@ footer {
     <option value="difficile">🔴 Difficile</option>
 </select>
        onclick="alert('✅ LE BOUTON FONCTIONNE !')"
-
-        </button>
-
         <div id="messageQuiz" class="result"></div>
     </div>
 </section>
@@ -1051,7 +1048,7 @@ function commencerQuiz() {
     let classe = document.getElementById("classeQuiz").value;
     let matiere = document.getElementById("matiereQuiz").value;
     let niveau = document.getElementById("niveauQuiz").value;
-    
+     alert("✅ Le bouton fonctionne !");
     
     if (classe === "" || matiere === "" || niveau === "") {
 
@@ -1097,7 +1094,6 @@ showPage("pageQuiz");
 
 afficherQuestionQuiz();
 
-}
 
 // ===============================
 // 📖 AFFICHER UNE QUESTION
@@ -1228,6 +1224,7 @@ function terminerQuiz() {
             </button>
         </div>
     `;
+}
 }    
 </script>
 
