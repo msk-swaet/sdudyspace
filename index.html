@@ -261,11 +261,27 @@ footer {
 
 <section id="revision" class="page">
     <div class="card">
-        <h2>📚 Révisions</h2>
-        <p>Ajoute ici les matières que tu dois réviser.</p>
+        <h2>📚 Mes révisions</h2>
 
-        <input type="text" id="matiere" placeholder="Ex : Mathématiques">
-        <button class="action" onclick="ajouterRevision()">Ajouter 📖</button>
+        <p>Ajoute les matières que tu dois réviser et coche-les quand tu as terminé ✨</p>
+
+        <div class="revision-form">
+            <input 
+                type="text" 
+                id="matiere" 
+                placeholder="Ex : Mathématiques"
+            >
+
+            <input 
+                type="text" 
+                id="chapitre" 
+                placeholder="Ex : Équations"
+            >
+
+            <button class="action" onclick="ajouterRevision()">
+                ➕ Ajouter
+            </button>
+        </div>
 
         <div id="listeRevision"></div>
     </div>
@@ -437,18 +453,27 @@ function ajouterMatiere() {
 
 function ajouterRevision() {
     let matiere = document.getElementById("matiere").value;
+    let chapitre = document.getElementById("chapitre").value;
 
-    if (matiere.trim() === "") {
+    if (matiere.trim() === "" || chapitre.trim() === "") {
+        alert("⚠️ Remplis la matière et le chapitre !");
         return;
     }
 
     let element = document.createElement("div");
     element.className = "task";
-    element.innerHTML = "📖 " + matiere;
+
+    element.innerHTML = `
+        <input type="checkbox">
+        <span>
+            <strong>${matiere}</strong> — ${chapitre}
+        </span>
+    `;
 
     document.getElementById("listeRevision").appendChild(element);
 
     document.getElementById("matiere").value = "";
+    document.getElementById("chapitre").value = "";
 }
 
 function ajouterTache() {
