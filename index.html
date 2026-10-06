@@ -257,6 +257,7 @@ footer {
         <div id="resultatMoyenne" class="result"></div>
     </div>
 </section>
+</section>
 
 <section id="revision" class="page">
     <div class="card">
@@ -353,7 +354,7 @@ footer {
 </main>
 
 <footer>
-    🌸 StudySpace — Créé par un élève pour les élèves 
+    🌸 StudySpace — Créé par une élève pour des élèves 
 </footer>
 
 <script>
@@ -380,13 +381,59 @@ function ajouterMatiere() {
 
     ligne.innerHTML = `
         <input type="text" placeholder="Matière">
-        <input type="number" placeholder="Note /20" min="0" max="20">
+        <input type="number" placeholder="Devoir 1" min="0" max="20">
+        <input type="number" placeholder="Devoir 2" min="0" max="20">
+        <input type="number" placeholder="Composition" min="0" max="20">
         <input type="number" placeholder="Coefficient" min="1" value="1">
     `;
 
     document.getElementById("matieres").appendChild(ligne);
 }
-    
+    function calculerMoyenne() {
+    let lignes = document.querySelectorAll(".matiere-ligne");
+
+    let totalPoints = 0;
+    let totalCoefficients = 0;
+
+    lignes.forEach(ligne => {
+        let inputs = ligne.querySelectorAll("input");
+
+        let devoir1 = parseFloat(inputs[1].value);
+        let devoir2 = parseFloat(inputs[2].value);
+        let composition = parseFloat(inputs[3].value);
+        let coefficient = parseFloat(inputs[4].value);
+
+        if (
+            !isNaN(devoir1) &&
+            !isNaN(devoir2) &&
+            !isNaN(composition) &&
+            !isNaN(coefficient)
+        ) {
+            // Moyenne des deux devoirs
+            let moyenneDevoirs = (devoir1 + devoir2) / 2;
+
+            // Moyenne devoirs + composition
+            let moyenneMatiere = (moyenneDevoirs + composition) / 2;
+
+            // Avec le coefficient
+            totalPoints += moyenneMatiere * coefficient;
+            totalCoefficients += coefficient;
+        }
+    });
+
+    if (totalCoefficients === 0) {
+        document.getElementById("resultatMoyenne").innerHTML =
+            "⚠️ Remplis au moins une matière.";
+        return;
+    }
+
+    let moyenneGenerale = totalPoints / totalCoefficients;
+
+    document.getElementById("resultatMoyenne").innerHTML =
+        "🌸 Ta moyenne générale est : " +
+        moyenneGenerale.toFixed(2) +
+        " / 20";
+}
 
 function ajouterRevision() {
     let matiere = document.getElementById("matiere").value;
