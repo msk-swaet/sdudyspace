@@ -449,6 +449,52 @@ footer {
         </select>
 
         <label>🎯 Niveau</label>
+        <section id="quiz" class="page">
+    <div class="card">
+        <h2>🧠 Quiz StudySpace</h2>
+
+        <p>Configure ton quiz selon ton parcours scolaire ✨</p>
+
+        <label>🎓 Classe</label>
+        <select id="classeQuiz" onchange="mettreAJourEtablissement()">
+            <option value="">-- Choisir ta classe --</option>
+            <option value="6e">6e</option>
+            <option value="5e">5e</option>
+            <option value="4e">4e</option>
+            <option value="3e">3e</option>
+            <option value="2nde">2nde</option>
+            <option value="1ere">1ère</option>
+            <option value="terminale">Terminale</option>
+        </select>
+
+        <div id="choixEtablissement" style="display:none;">
+            <label>🏫 Type d'établissement</label>
+            <select id="typeEtablissement" onchange="mettreAJourParcours()">
+                <option value="">-- Choisir --</option>
+                <option value="public">Public</option>
+                <option value="prive">Privé</option>
+                <option value="priveBilingue">Privé bilingue</option>
+                <option value="francoArabe">Franco-arabe</option>
+            </select>
+        </div>
+
+        <div id="choixParcours" style="display:none;">
+            <label>🔬 Bloc / parcours</label>
+            <select id="parcoursQuiz" onchange="mettreAJourMatieres()">
+                <option value="">-- Choisir --</option>
+            </select>
+        </div>
+
+        <label>📚 Matière</label>
+        <select id="matiereQuiz">
+            <option value="">-- Choisir d'abord ton parcours --</option>
+        </select>
+
+        <button class="action" onclick="ajouterMatiereQuiz()">
+            ➕ Ajouter une matière
+        </button>
+
+        <label>🎯 Niveau</label>
         <select id="niveauQuiz">
             <option value="">-- Choisir un niveau --</option>
             <option value="facile">🟢 Facile</option>
@@ -463,7 +509,6 @@ footer {
         <div id="messageQuiz" class="result"></div>
     </div>
 </section>
-
 <section id="calendrier" class="page">
     <div class="card">
         <h2>📅 Calendrier</h2>
