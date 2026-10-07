@@ -227,7 +227,7 @@ footer {
         <h2>Bienvenue sur StudySpace 💕</h2>
         <p>Un petit espace créé pour t'aider à mieux organiser tes études.</p>
         <p>📚 Travaille • 🧠 Révise • ✅ Organise-toi • 🌸 Progresse</p>
-        <p> 🌸 by MSK 🌸
+        <p>🌸 by MSK 🌸</p>
     </div>
 </section>
 
@@ -266,15 +266,15 @@ footer {
         <p>Ajoute les matières que tu dois réviser et coche-les quand tu as terminé ✨</p>
 
         <div class="revision-form">
-            <input 
-                type="text" 
-                id="matiere" 
+            <input
+                type="text"
+                id="matiere"
                 placeholder="Ex : Mathématiques"
             >
 
-            <input 
-                type="text" 
-                id="chapitre" 
+            <input
+                type="text"
+                id="chapitre"
                 placeholder="Ex : Équations"
             >
 
@@ -345,70 +345,89 @@ footer {
         <div id="listeTaches"></div>
     </div>
 </section>
+
 <section id="quiz" class="page">
     <div class="card">
         <h2>🧠 Quiz StudySpace</h2>
 
         <p>Configure ton quiz selon ton parcours scolaire ✨</p>
 
-<label>🎓 Classe</label>
-<select id="classeQuiz" onchange="mettreAJourEtablissement()">
-    <option value="">-- Choisir ta classe --</option>
-    <option value="6e">6e</option>
-    <option value="5e">5e</option>
-    <option value="4e">4e</option>
-    <option value="3e">3e</option>
-    <option value="2nde">2nde</option>
-    <option value="1ere">1ère</option>
-    <option value="terminale">Terminale</option>
-</select>
+        <label>🎓 Classe</label>
 
-<div id="choixEtablissement" style="display:none;">
+        <select
+            id="classeQuiz"
+            onchange="mettreAJourEtablissement()"
+        >
+            <option value="">-- Choisir ta classe --</option>
+            <option value="6e">6e</option>
+            <option value="5e">5e</option>
+            <option value="4e">4e</option>
+            <option value="3e">3e</option>
+            <option value="2nde">2nde</option>
+            <option value="1ere">1ère</option>
+            <option value="terminale">Terminale</option>
+        </select>
 
-    <label>🏫 Type d'établissement</label>
+        <div id="choixEtablissement" style="display:none;">
 
-    <select id="typeEtablissement" onchange="mettreAJourParcours()">
-        <option value="">-- Choisir --</option>
-        <option value="public">Public</option>
-        <option value="prive">Privé</option>
-        <option value="priveBilingue">Privé bilingue</option>
-        <option value="francoArabe">Franco-arabe</option>
-    </select>
+            <label>🏫 Type d'établissement</label>
 
-</div>
+            <select
+                id="typeEtablissement"
+                onchange="mettreAJourParcours()"
+            >
+                <option value="">-- Choisir --</option>
+                <option value="public">Public</option>
+                <option value="prive">Privé</option>
+                <option value="priveBilingue">Privé bilingue</option>
+                <option value="francoArabe">Franco-arabe</option>
+            </select>
 
-<div id="choixParcours" style="display:none;">
+        </div>
 
-    <label>🔬 Bloc / parcours</label>
+        <div id="choixParcours" style="display:none;">
 
-    <select id="parcoursQuiz" onchange="mettreAJourMatieres()">
-        <option value="">-- Choisir --</option>
-    </select>
+            <label>🔬 Bloc / parcours</label>
 
-</div>
+            <select
+                id="parcoursQuiz"
+                onchange="mettreAJourMatieres()"
+            >
+                <option value="">-- Choisir --</option>
+            </select>
 
-<label>📚 Matière</label>
+        </div>
 
-<select id="matiereQuiz">
-    <option value="">-- Choisir d'abord ton parcours --</option>
-</select>
+        <label>📚 Matière</label>
 
-<button class="action" onclick="ajouterMatiereQuiz()">
-    ➕ Ajouter une matière
-</button>
+        <select id="matiereQuiz">
+            <option value="">
+                -- Choisir d'abord ton parcours --
+            </option>
+        </select>
 
-<label>🎯 Niveau</label>
+        <button class="action" onclick="ajouterMatiereQuiz()">
+            ➕ Ajouter une matière
+        </button>
 
-<select id="niveauQuiz">
-    <option value="">-- Choisir un niveau --</option>
-    <option value="facile">🟢 Facile</option>
-    <option value="moyen">🟡 Moyen</option>
-    <option value="difficile">🔴 Difficile</option>
-</select>
-       onclick="alert('✅ LE BOUTON FONCTIONNE !')"
+        <label>🎯 Niveau</label>
+
+        <select id="niveauQuiz">
+            <option value="">-- Choisir un niveau --</option>
+            <option value="facile">🟢 Facile</option>
+            <option value="moyen">🟡 Moyen</option>
+            <option value="difficile">🔴 Difficile</option>
+        </select>
+
+        <button class="action" onclick="commencerQuiz()">
+            🚀 Commencer le quiz
+        </button>
+
         <div id="messageQuiz" class="result"></div>
+
     </div>
 </section>
+
 <section id="pageQuiz" class="page">
 
     <div class="card">
@@ -420,6 +439,7 @@ footer {
     </div>
 
 </section>
+
 <section id="calendrier" class="page">
     <div class="card">
         <h2>📅 Calendrier</h2>
@@ -428,9 +448,15 @@ footer {
 
         <input type="date" id="date">
 
-        <input type="text" id="evenement" placeholder="Ex : Contrôle de maths">
+        <input
+            type="text"
+            id="evenement"
+            placeholder="Ex : Contrôle de maths"
+        >
 
-        <button class="action" onclick="ajouterEvenement()">Ajouter 📌</button>
+        <button class="action" onclick="ajouterEvenement()">
+            Ajouter 📌
+        </button>
 
         <div id="listeEvenements"></div>
     </div>
@@ -439,12 +465,13 @@ footer {
 </main>
 
 <footer>
-    🌸 StudySpace — Créé par une élève pour des élèves 
+    🌸 StudySpace — Créé par une élève pour des élèves
 </footer>
 
 <script>
 
 function showPage(pageId) {
+
     const pages = document.querySelectorAll(".page");
 
     pages.forEach(page => {
@@ -459,7 +486,13 @@ function showPage(pageId) {
     });
 }
 
+
+// ===============================
+// 🧮 CALCULATEUR DE MOYENNE
+// ===============================
+
 function ajouterMatiere() {
+
     let ligne = document.createElement("div");
 
     ligne.className = "matiere-ligne";
@@ -474,13 +507,17 @@ function ajouterMatiere() {
 
     document.getElementById("matieres").appendChild(ligne);
 }
-    function calculerMoyenne() {
+
+
+function calculerMoyenne() {
+
     let lignes = document.querySelectorAll(".matiere-ligne");
 
     let totalPoints = 0;
     let totalCoefficients = 0;
 
     lignes.forEach(ligne => {
+
         let inputs = ligne.querySelectorAll("input");
 
         let devoir1 = parseFloat(inputs[1].value);
@@ -494,25 +531,30 @@ function ajouterMatiere() {
             !isNaN(composition) &&
             !isNaN(coefficient)
         ) {
-            // Moyenne des deux devoirs
-            let moyenneDevoirs = (devoir1 + devoir2) / 2;
 
-            // Moyenne devoirs + composition
-            let moyenneMatiere = (moyenneDevoirs + composition) / 2;
+            let moyenneDevoirs =
+                (devoir1 + devoir2) / 2;
 
-            // Avec le coefficient
-            totalPoints += moyenneMatiere * coefficient;
+            let moyenneMatiere =
+                (moyenneDevoirs + composition) / 2;
+
+            totalPoints +=
+                moyenneMatiere * coefficient;
+
             totalCoefficients += coefficient;
         }
     });
 
     if (totalCoefficients === 0) {
+
         document.getElementById("resultatMoyenne").innerHTML =
             "⚠️ Remplis au moins une matière.";
+
         return;
     }
 
-    let moyenneGenerale = totalPoints / totalCoefficients;
+    let moyenneGenerale =
+        totalPoints / totalCoefficients;
 
     document.getElementById("resultatMoyenne").innerHTML =
         "🌸 Ta moyenne générale est : " +
@@ -520,16 +562,34 @@ function ajouterMatiere() {
         " / 20";
 }
 
-function ajouterRevision() {
-    let matiere = document.getElementById("matiere").value;
-    let chapitre = document.getElementById("chapitre").value;
 
-    if (matiere.trim() === "" || chapitre.trim() === "") {
-        alert("⚠️ Remplis la matière et le chapitre !");
+// ===============================
+// 📚 RÉVISIONS
+// ===============================
+
+function ajouterRevision() {
+
+    let matiere =
+        document.getElementById("matiere").value;
+
+    let chapitre =
+        document.getElementById("chapitre").value;
+
+    if (
+        matiere.trim() === "" ||
+        chapitre.trim() === ""
+    ) {
+
+        alert(
+            "⚠️ Remplis la matière et le chapitre !"
+        );
+
         return;
     }
 
-    let element = document.createElement("div");
+    let element =
+        document.createElement("div");
+
     element.className = "task";
 
     element.innerHTML = `
@@ -539,78 +599,125 @@ function ajouterRevision() {
         </span>
     `;
 
-    document.getElementById("listeRevision").appendChild(element);
+    document
+        .getElementById("listeRevision")
+        .appendChild(element);
 
     document.getElementById("matiere").value = "";
     document.getElementById("chapitre").value = "";
 }
 
+
+// ===============================
+// ✅ TÂCHES
+// ===============================
+
 function ajouterTache() {
-    let tache = document.getElementById("nouvelleTache").value;
+
+    let tache =
+        document.getElementById("nouvelleTache").value;
 
     if (tache.trim() === "") {
+
         alert("⚠️ Écris une tâche !");
+
         return;
     }
 
-    let element = document.createElement("div");
+    let element =
+        document.createElement("div");
+
     element.className = "task";
 
     element.innerHTML = `
-        <input type="checkbox" onchange="terminerTache(this)">
+        <input
+            type="checkbox"
+            onchange="terminerTache(this)"
+        >
+
         <span>${tache}</span>
-        <button onclick="supprimerTache(this)">🗑️</button>
+
+        <button onclick="supprimerTache(this)">
+            🗑️
+        </button>
     `;
 
-    document.getElementById("listeTaches").appendChild(element);
+    document
+        .getElementById("listeTaches")
+        .appendChild(element);
 
     document.getElementById("nouvelleTache").value = "";
 }
 
+
 function terminerTache(checkbox) {
-    let texte = checkbox.nextElementSibling;
+
+    let texte =
+        checkbox.nextElementSibling;
 
     if (checkbox.checked) {
-        texte.style.textDecoration = "line-through";
+
+        texte.style.textDecoration =
+            "line-through";
+
         texte.style.opacity = "0.5";
+
     } else {
-        texte.style.textDecoration = "none";
+
+        texte.style.textDecoration =
+            "none";
+
         texte.style.opacity = "1";
     }
 }
 
+
 function supprimerTache(bouton) {
+
     bouton.parentElement.remove();
 }
-function verifierQuiz(correct) {
-    if (correct) {
-        document.getElementById("resultatQuiz").innerHTML =
-            "🎉 Bravo ! Bonne réponse !";
-    } else {
-        document.getElementById("resultatQuiz").innerHTML =
-            "😅 Pas tout à fait ! Essaie encore.";
-    }
-}
+
+
+// ===============================
+// 📅 CALENDRIER
+// ===============================
 
 function ajouterEvenement() {
-    let date = document.getElementById("date").value;
-    let evenement = document.getElementById("evenement").value;
 
-    if (date === "" || evenement.trim() === "") {
+    let date =
+        document.getElementById("date").value;
+
+    let evenement =
+        document.getElementById("evenement").value;
+
+    if (
+        date === "" ||
+        evenement.trim() === ""
+    ) {
         return;
     }
 
-    let element = document.createElement("div");
+    let element =
+        document.createElement("div");
+
     element.className = "task";
 
     element.innerHTML =
         "📌 " + date + " — " + evenement;
 
-    document.getElementById("listeEvenements").appendChild(element);
+    document
+        .getElementById("listeEvenements")
+        .appendChild(element);
 
     document.getElementById("date").value = "";
     document.getElementById("evenement").value = "";
 }
+
+
+// ===============================
+// 🏫 MATIÈRES DU QUIZ
+// ===============================
+
 const matieresBase = {
 
     "6e": [
@@ -633,16 +740,16 @@ const matieresBase = {
         "Éducation civique"
     ],
 
-  "4e": [
-    "Français",
-    "Mathématiques",
-    "Anglais",
-    "Histoire",
-    "Géographie",
-    "SVT",
-    "Physique-Chimie",
-    "Éducation civique"
-], 
+    "4e": [
+        "Français",
+        "Mathématiques",
+        "Anglais",
+        "Histoire",
+        "Géographie",
+        "SVT",
+        "Éducation civique"
+    ],
+
     "3e": [
         "Français",
         "Mathématiques",
@@ -650,7 +757,6 @@ const matieresBase = {
         "Histoire",
         "Géographie",
         "SVT",
-        "Physique-Chimie",
         "Éducation civique"
     ],
 
@@ -685,8 +791,11 @@ const matieresBase = {
 
 function mettreAJourEtablissement() {
 
-    let classe = document.getElementById("classeQuiz").value;
-    let choix = document.getElementById("choixEtablissement");
+    let classe =
+        document.getElementById("classeQuiz").value;
+
+    let choix =
+        document.getElementById("choixEtablissement");
 
     if (classe !== "") {
         choix.style.display = "block";
@@ -694,7 +803,8 @@ function mettreAJourEtablissement() {
         choix.style.display = "none";
     }
 
-    document.getElementById("choixParcours").style.display = "none";
+    document.getElementById("choixParcours").style.display =
+        "none";
 
     document.getElementById("matiereQuiz").innerHTML =
         '<option value="">-- Choisir d\'abord ton parcours --</option>';
@@ -703,33 +813,55 @@ function mettreAJourEtablissement() {
 
 function mettreAJourParcours() {
 
-    let type = document.getElementById("typeEtablissement").value;
-    let choixParcours = document.getElementById("choixParcours");
-    let parcours = document.getElementById("parcoursQuiz");
+    let type =
+        document.getElementById("typeEtablissement").value;
+
+    let choixParcours =
+        document.getElementById("choixParcours");
+
+    let parcours =
+        document.getElementById("parcoursQuiz");
 
     parcours.innerHTML =
         '<option value="">-- Choisir --</option>';
 
     if (type === "") {
-        choixParcours.style.display = "none";
+
+        choixParcours.style.display =
+            "none";
+
         return;
     }
 
-    choixParcours.style.display = "block";
+    choixParcours.style.display =
+        "block";
 
     parcours.innerHTML += `
-        <option value="classique">🏫 Parcours classique</option>
-        <option value="bst">🔬 Bloc scientifique et technologique</option>
-        <option value="personnalise">✏️ Parcours personnalisé</option>
+        <option value="classique">
+            🏫 Parcours classique
+        </option>
+
+        <option value="bst">
+            🔬 Bloc scientifique et technologique
+        </option>
+
+        <option value="personnalise">
+            ✏️ Parcours personnalisé
+        </option>
     `;
 }
 
 
 function mettreAJourMatieres() {
 
-    let classe = document.getElementById("classeQuiz").value;
-    let parcours = document.getElementById("parcoursQuiz").value;
-    let selectMatiere = document.getElementById("matiereQuiz");
+    let classe =
+        document.getElementById("classeQuiz").value;
+
+    let parcours =
+        document.getElementById("parcoursQuiz").value;
+
+    let selectMatiere =
+        document.getElementById("matiereQuiz");
 
     selectMatiere.innerHTML =
         '<option value="">-- Choisir une matière --</option>';
@@ -738,18 +870,19 @@ function mettreAJourMatieres() {
         return;
     }
 
-    let matieres = [...matieresBase[classe]];
+    let matieres =
+        [...matieresBase[classe]];
 
     if (parcours === "bst") {
 
         matieres.push("Technologie");
         matieres.push("Économie familiale");
-
     }
 
     matieres.forEach(function(matiere) {
 
-        let option = document.createElement("option");
+        let option =
+            document.createElement("option");
 
         option.value = matiere;
         option.textContent = matiere;
@@ -761,27 +894,38 @@ function mettreAJourMatieres() {
 
 function ajouterMatiereQuiz() {
 
-    let nouvelleMatiere = prompt(
-        "📚 Écris le nom de la matière à ajouter :"
-    );
+    let nouvelleMatiere =
+        prompt(
+            "📚 Écris le nom de la matière à ajouter :"
+        );
 
-    if (nouvelleMatiere && nouvelleMatiere.trim() !== "") {
+    if (
+        nouvelleMatiere &&
+        nouvelleMatiere.trim() !== ""
+    ) {
 
-        let selectMatiere = document.getElementById("matiereQuiz");
+        let selectMatiere =
+            document.getElementById("matiereQuiz");
 
-        let option = document.createElement("option");
+        let option =
+            document.createElement("option");
 
-        option.value = nouvelleMatiere.trim();
-        option.textContent = "✏️ " + nouvelleMatiere.trim();
+        option.value =
+            nouvelleMatiere.trim();
+
+        option.textContent =
+            "✏️ " + nouvelleMatiere.trim();
 
         selectMatiere.appendChild(option);
 
-        selectMatiere.value = nouvelleMatiere.trim();
+        selectMatiere.value =
+            nouvelleMatiere.trim();
     }
-
 }
-    // ===============================
-// 🧠 MOTEUR DU QUIZ STUDYSPACE
+
+
+// ===============================
+// 🧠 MOTEUR DU QUIZ
 // ===============================
 
 let quizQuestions = [];
@@ -789,3590 +933,331 @@ let quizIndex = 0;
 let quizScore = 0;
 
 
-// Banque de questions - 4e
+// ===============================
+// 📚 BANQUE DE QUESTIONS
+// ===============================
+
 const banqueQuestions = {
 
     "4e": {
 
         "Mathématiques": [
-    {
-        question: "Résous : 3x + 4 = 19",
-        options: ["3", "5", "7", "9"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Calcule : 8 × 7",
-        options: ["48", "54", "56", "64"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Calcule : 15 - 8 + 4",
-        options: ["9", "10", "11", "12"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Calcule : 2/3 + 1/6",
-        options: ["1/2", "2/3", "5/6", "1"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Si x + 7 = 15, quelle est la valeur de x ?",
-        options: ["6", "7", "8", "9"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Développe : 3(x + 4)",
-        options: ["3x + 4", "3x + 7", "3x + 12", "x + 12"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Un triangle a une base de 8 cm et une hauteur de 5 cm. Quelle est son aire ?",
-        options: ["13 cm²", "20 cm²", "40 cm²", "16 cm²"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Factorise : 6x + 12",
-        options: ["6(x + 2)", "3(x + 4)", "12(x + 6)", "6(x + 12)"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Un article coûte 20 000 F et bénéficie d'une réduction de 10 %. Quel est son nouveau prix ?",
-        options: ["18 000 F", "19 000 F", "19 500 F", "20 100 F"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la solution de 2x - 6 = 10 ?",
-        options: ["6", "7", "8", "9"],
-        reponse: 2,
-        niveau: "difficile"
-    }
-],
+            {
+                question: "Résous : 3x + 4 = 19",
+                options: ["3", "5", "7", "9"],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Calcule : 2/3 + 1/6",
+                options: ["3/9", "4/6", "5/6", "1"],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Un triangle a une base de 8 cm et une hauteur de 5 cm. Quelle est son aire ?",
+                options: [
+                    "13 cm²",
+                    "20 cm²",
+                    "40 cm²",
+                    "16 cm²"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ],
+
         "Français": [
-    {
-        question: "Dans « Awa lit un livre », quel est le COD ?",
-        options: ["Awa", "lit", "un livre", "aucun"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le contraire de « courageux » ?",
-        options: ["Brave", "Peureux", "Fort", "Audacieux"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Les élèves travaillent sérieusement », quel est le verbe ?",
-        options: ["Les élèves", "travaillent", "sérieusement", "élèves"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Il parle rapidement », quelle est la nature de « rapidement » ?",
-        options: ["Nom", "Adjectif", "Adverbe", "Verbe"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le féminin de « heureux » ?",
-        options: ["Heureuse", "Heureuxse", "Heureuxe", "Heureus"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Dans « Nous avons mangé », quel est le temps du verbe ?",
-        options: [
-            "Présent",
-            "Imparfait",
-            "Passé composé",
-            "Futur simple"
+            {
+                question: "Dans « Awa lit un livre », quel est le COD ?",
+                options: [
+                    "Awa",
+                    "lit",
+                    "un livre",
+                    "aucun"
+                ],
+                reponse: 2,
+                niveau: "facile"
+            },
+            {
+                question: "Dans « Il parle rapidement », quelle est la nature de « rapidement » ?",
+                options: [
+                    "Nom",
+                    "Adjectif",
+                    "Adverbe",
+                    "Verbe"
+                ],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Quelle phrase est à la voix passive ?",
+                options: [
+                    "Le professeur explique la leçon.",
+                    "La leçon est expliquée par le professeur.",
+                    "Le professeur explique bien.",
+                    "Les élèves étudient."
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
         ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle phrase est à la voix passive ?",
-        options: [
-            "Le professeur explique la leçon.",
-            "La leçon est expliquée par le professeur.",
-            "Le professeur explique bien.",
-            "Les élèves étudient."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans « La petite fille joue dans le jardin », quel est le groupe sujet ?",
-        options: [
-            "joue",
-            "dans le jardin",
-            "La petite fille",
-            "petite"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le type de phrase : « Ferme la porte ! » ?",
-        options: [
-            "Déclarative",
-            "Interrogative",
-            "Exclamative",
-            "Impérative"
-        ],
-        reponse: 3,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans « Cette fille chante une belle chanson », quel est le groupe nominal complément d'objet direct ?",
-        options: [
-            "Cette fille",
-            "chante",
-            "une belle chanson",
-            "belle"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    }
-],
 
         "Anglais": [
-    {
-        question: "What is the past tense of « go »?",
-        options: ["goed", "went", "gone", "going"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct answer: She ___ my friend.",
-        options: ["am", "are", "is", "be"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "What is the plural of « child »?",
-        options: ["childs", "childrens", "children", "child"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct answer: They ___ playing football.",
-        options: ["is", "am", "are", "be"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "What does « I have two brothers » mean?",
-        options: [
-            "J'ai deux sœurs.",
-            "J'ai deux frères.",
-            "J'ai trois frères.",
-            "Je suis un frère."
+            {
+                question: "What is the past tense of « go » ?",
+                options: [
+                    "goed",
+                    "went",
+                    "gone",
+                    "going"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Choose the correct answer: She ___ playing football.",
+                options: [
+                    "am",
+                    "are",
+                    "is",
+                    "be"
+                ],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "What does « I have two brothers » mean?",
+                options: [
+                    "J'ai deux sœurs.",
+                    "J'ai deux frères.",
+                    "J'ai trois frères.",
+                    "Je suis un frère."
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
         ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct form: He ___ to school every day.",
-        options: ["go", "goes", "going", "gone"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Which sentence is in the past tense?",
-        options: [
-            "She plays tennis.",
-            "She is playing tennis.",
-            "She played tennis.",
-            "She will play tennis."
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct answer: We ___ finished our homework.",
-        options: ["has", "have", "having", "hadn't"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "What is the opposite of « expensive »?",
-        options: ["Cheap", "Beautiful", "Heavy", "Difficult"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct question: ___ do you live?",
-        options: ["What", "Where", "Who", "When"],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
+
         "Histoire": [
-    {
-        question: "La conférence de Berlin sur le partage de l'Afrique a eu lieu en…",
-        options: ["1789", "1848", "1884-1885", "1914"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel pays a été le premier à établir une colonie au Sénégal ?",
-        options: ["La France", "L'Espagne", "Le Portugal", "L'Italie"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année l'esclavage a-t-il été définitivement aboli dans les colonies françaises ?",
-        options: ["1789", "1848", "1905", "1960"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel explorateur français a participé à l'expansion française en Afrique de l'Ouest au XIXe siècle ?",
-        options: ["Louis Faidherbe", "Napoléon Bonaparte", "Jules Ferry", "Charles de Gaulle"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "La colonisation de l'Afrique par les puissances européennes s'est particulièrement développée au…",
-        options: [
-            "XVIIe siècle",
-            "XVIIIe siècle",
-            "XIXe siècle",
-            "XXIe siècle"
+            {
+                question: "La conférence de Berlin sur le partage de l'Afrique a eu lieu en…",
+                options: [
+                    "1789",
+                    "1848",
+                    "1884-1885",
+                    "1914"
+                ],
+                reponse: 2,
+                niveau: "facile"
+            },
+            {
+                question: "En quelle année l'esclavage a-t-il été définitivement aboli dans les colonies françaises ?",
+                options: [
+                    "1789",
+                    "1848",
+                    "1900",
+                    "1960"
+                ],
+                reponse: 1,
+                niveau: "moyen"
+            },
+            {
+                question: "Le Sénégal accède à l'indépendance en…",
+                options: [
+                    "1945",
+                    "1958",
+                    "1960",
+                    "1975"
+                ],
+                reponse: 2,
+                niveau: "difficile"
+            }
         ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel était l'un des objectifs principaux de la conférence de Berlin ?",
-        options: [
-            "Organiser le partage et les règles de conquête des territoires africains",
-            "Mettre fin à la Première Guerre mondiale",
-            "Créer l'ONU",
-            "Accorder l'indépendance à tous les pays africains"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Le Sénégal accède à l'indépendance en…",
-        options: ["1945", "1958", "1960", "1975"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Qui fut le premier président du Sénégal indépendant ?",
-        options: [
-            "Léopold Sédar Senghor",
-            "Abdou Diouf",
-            "Abdoulaye Wade",
-            "Macky Sall"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel événement marque le début de la Première Guerre mondiale ?",
-        options: [
-            "La prise de la Bastille",
-            "L'assassinat de l'archiduc François-Ferdinand",
-            "La conférence de Berlin",
-            "La chute du mur de Berlin"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel événement est souvent considéré comme le début de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "L'invasion de la Pologne par l'Allemagne en 1939",
-            "L'indépendance du Sénégal",
-            "La conférence de Berlin",
-            "La révolution française"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
+
         "Géographie": [
-    {
-        question: "Quelle est la capitale du Sénégal ?",
-        options: ["Thiès", "Saint-Louis", "Dakar", "Ziguinchor"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel océan borde le Sénégal à l'ouest ?",
-        options: [
-            "Océan Indien",
-            "Océan Atlantique",
-            "Océan Pacifique",
-            "Océan Arctique"
+            {
+                question: "Le Sahel est situé entre…",
+                options: [
+                    "Le Sahara et les régions plus humides du sud",
+                    "L'océan et l'Europe",
+                    "L'Asie et l'Afrique",
+                    "Les pôles"
+                ],
+                reponse: 0,
+                niveau: "facile"
+            },
+            {
+                question: "Quelle est la capitale du Sénégal ?",
+                options: [
+                    "Thiès",
+                    "Saint-Louis",
+                    "Dakar",
+                    "Ziguinchor"
+                ],
+                reponse: 2,
+                niveau: "moyen"
+            },
+            {
+                question: "Quel océan borde le Sénégal à l'ouest ?",
+                options: [
+                    "Océan Indien",
+                    "Océan Atlantique",
+                    "Océan Pacifique",
+                    "Océan Arctique"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
         ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Le Sénégal se situe sur quel continent ?",
-        options: ["Asie", "Afrique", "Europe", "Amérique"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Le Sahel est une région située principalement entre…",
-        options: [
-            "Le Sahara et les régions plus humides du sud",
-            "L'Europe et l'Asie",
-            "L'océan Atlantique et le Pacifique",
-            "Les régions polaires"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel fleuve forme une partie de la frontière nord du Sénégal ?",
-        options: [
-            "Le fleuve Congo",
-            "Le fleuve Niger",
-            "Le fleuve Sénégal",
-            "Le fleuve Nil"
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle ville est située en Casamance ?",
-        options: ["Ziguinchor", "Saint-Louis", "Louga", "Matam"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le principal type de climat dans une grande partie du Sénégal ?",
-        options: [
-            "Climat polaire",
-            "Climat tropical",
-            "Climat montagnard",
-            "Climat méditerranéen"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "La migration des populations vers les villes est appelée…",
-        options: [
-            "Urbanisation",
-            "Déforestation",
-            "Irrigation",
-            "Industrialisation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel facteur explique principalement l'existence d'une saison des pluies au Sénégal ?",
-        options: [
-            "Les vents de mousson",
-            "Les glaciers",
-            "Les vents polaires",
-            "Les séismes"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel espace naturel du Sénégal est particulièrement connu pour ses mangroves ?",
-        options: [
-            "La Casamance",
-            "Le Ferlo uniquement",
-            "Le Fouta-Djalon",
-            "Le massif du Fouta"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
 
         "SVT": [
-    {
-        question: "Quel organe permet principalement les échanges gazeux chez l'être humain ?",
-        options: ["Le cœur", "Les poumons", "L'estomac", "Le foie"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel élément du sang transporte principalement l'oxygène ?",
-        options: [
-            "Les globules rouges",
-            "Les plaquettes",
-            "Le plasma",
-            "Les globules blancs"
+            {
+                question: "Quel organe permet principalement les échanges gazeux chez l'être humain ?",
+                options: [
+                    "Le cœur",
+                    "Les poumons",
+                    "L'estomac",
+                    "Le foie"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Quel élément du sang transporte principalement l'oxygène ?",
+                options: [
+                    "Les globules rouges",
+                    "Les plaquettes",
+                    "Le plasma",
+                    "Les globules blancs"
+                ],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "La photosynthèse nécessite notamment de la lumière, de l'eau et…",
+                options: [
+                    "Du dioxyde de carbone",
+                    "Du sel",
+                    "Du fer",
+                    "De l'azote pur"
+                ],
+                reponse: 0,
+                niveau: "difficile"
+            }
         ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organe pompe le sang dans tout le corps ?",
-        options: ["Le cerveau", "Le cœur", "Les poumons", "Les reins"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "La digestion commence principalement dans…",
-        options: ["L'estomac", "La bouche", "L'intestin", "Le foie"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle principal des reins ?",
-        options: [
-            "Pomper le sang",
-            "Filtrer le sang et produire l'urine",
-            "Permettre la respiration",
-            "Digérer les aliments"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "La photosynthèse nécessite notamment de la lumière, de l'eau et…",
-        options: [
-            "Du dioxyde de carbone",
-            "Du sel",
-            "Du fer",
-            "De l'oxygène uniquement"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle structure permet principalement les échanges gazeux dans les poumons ?",
-        options: [
-            "Les alvéoles pulmonaires",
-            "Les reins",
-            "Les neurones",
-            "Les muscles"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel système assure principalement le transport du sang dans l'organisme ?",
-        options: [
-            "Le système digestif",
-            "Le système circulatoire",
-            "Le système nerveux",
-            "Le système osseux"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le rôle principal des globules blancs ?",
-        options: [
-            "Transporter l'oxygène",
-            "Participer à la défense de l'organisme",
-            "Faire coaguler le sang",
-            "Produire la bile"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel organe produit principalement la bile ?",
-        options: ["Le foie", "Le cœur", "Le pancréas", "Les reins"],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
+
         "Éducation civique": [
-    {
-        question: "Qu'est-ce qu'un citoyen ?",
-        options: [
-            "Une personne qui appartient à une communauté politique et possède des droits et des devoirs",
-            "Une personne qui ne respecte aucune règle",
-            "Une personne qui vit toujours à l'étranger",
-            "Une personne qui ne possède aucun droit"
+            {
+                question: "Le vote est principalement…",
+                options: [
+                    "Une activité sportive",
+                    "Un droit et un acte citoyen",
+                    "Une obligation scolaire",
+                    "Un loisir"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "La Constitution sert notamment à…",
+                options: [
+                    "Organiser les institutions de l'État",
+                    "Fixer le prix du pain",
+                    "Choisir les uniformes scolaires",
+                    "Déterminer la météo"
+                ],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "L'égalité devant la loi signifie que…",
+                options: [
+                    "Certaines personnes sont au-dessus des lois",
+                    "Tous sont soumis aux mêmes règles de droit",
+                    "Seuls les adultes ont des droits",
+                    "Les lois changent selon les personnes"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
         ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Le vote est principalement…",
-        options: [
-            "Une activité sportive",
-            "Un droit et un acte citoyen",
-            "Une obligation scolaire",
-            "Un loisir"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Parmi ces comportements, lequel est un acte citoyen ?",
-        options: [
-            "Respecter les biens publics",
-            "Détruire les équipements publics",
-            "Refuser toutes les règles",
-            "Jeter les déchets dans la rue"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "La Constitution sert notamment à…",
-        options: [
-            "Organiser les institutions de l'État",
-            "Fixer le prix des aliments",
-            "Choisir les uniformes scolaires",
-            "Déterminer la météo"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est un exemple de devoir du citoyen ?",
-        options: [
-            "Respecter les lois",
-            "Ignorer les règles",
-            "Détruire les biens publics",
-            "Empêcher les autres de s'exprimer"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Pourquoi faut-il respecter les biens publics ?",
-        options: [
-            "Parce qu'ils sont utiles à la collectivité",
-            "Parce qu'ils appartiennent à une seule personne",
-            "Parce qu'ils sont inutiles",
-            "Parce qu'ils sont toujours gratuits"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "L'égalité devant la loi signifie que…",
-        options: [
-            "Certaines personnes sont au-dessus des lois",
-            "Tous sont soumis aux mêmes règles de droit",
-            "Seuls les adultes ont des droits",
-            "Les lois changent selon les personnes"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "La liberté d'expression signifie qu'une personne peut…",
-        options: [
-            "Exprimer ses opinions dans le respect des lois et des autres",
-            "Insulter librement tout le monde",
-            "Ignorer toutes les lois",
-            "Empêcher les autres de parler"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel comportement favorise la paix dans une société ?",
-        options: [
-            "Le dialogue et le respect des autres",
-            "La violence",
-            "La discrimination",
-            "Le rejet systématique des autres"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi les citoyens doivent-ils respecter les droits des autres ?",
-        options: [
-            "Pour favoriser le vivre-ensemble et la justice",
-            "Pour empêcher toute liberté",
-            "Pour donner tous les droits à une seule personne",
-            "Pour supprimer les règles"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
+
         "Technologie": [
-    {
-        question: "Quel appareil permet de mesurer une température ?",
-        options: ["Une balance", "Un thermomètre", "Une règle", "Un voltmètre"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel élément permet d'ouvrir ou de fermer un circuit électrique ?",
-        options: ["Une ampoule", "Un interrupteur", "Une pile", "Un moteur"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle unité mesure la tension électrique ?",
-        options: ["Le volt", "Le watt", "L'ampère", "Le mètre"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel outil est principalement utilisé pour mesurer une longueur ?",
-        options: ["Un thermomètre", "Une règle", "Un voltmètre", "Une balance"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Dans un circuit simple, quel élément fournit généralement l'énergie électrique ?",
-        options: ["La pile", "L'interrupteur", "L'ampoule", "Le fil"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel élément transforme l'énergie électrique en lumière dans un circuit d'éclairage ?",
-        options: ["L'ampoule", "L'interrupteur", "La pile", "Le câble"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Dans un schéma technique, les symboles servent principalement à…",
-        options: [
-            "Représenter les éléments de manière conventionnelle",
-            "Décorer le schéma",
-            "Remplacer toutes les mesures",
-            "Écrire un texte"
+            {
+                question: "Quel appareil permet de mesurer une température ?",
+                options: [
+                    "Une balance",
+                    "Un thermomètre",
+                    "Une règle",
+                    "Un voltmètre"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Quel élément transforme l'énergie électrique en lumière dans une lampe ?",
+                options: [
+                    "La source lumineuse",
+                    "Le téléphone",
+                    "Le câble USB",
+                    "Le clavier"
+                ],
+                reponse: 0,
+                niveau: "moyen"
+            },
+            {
+                question: "Dans un circuit électrique simple, quel élément permet généralement d'ouvrir ou fermer le circuit ?",
+                options: [
+                    "L'interrupteur",
+                    "La pile",
+                    "L'ampoule",
+                    "Le fil uniquement"
+                ],
+                reponse: 0,
+                niveau: "difficile"
+            }
         ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel matériau est généralement un bon conducteur de l'électricité ?",
-        options: ["Le cuivre", "Le bois", "Le plastique", "Le verre"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le rôle principal d'un fusible dans une installation électrique ?",
-        options: [
-            "Protéger le circuit contre une surintensité",
-            "Produire de la lumière",
-            "Stocker l'eau",
-            "Augmenter la température"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Avant de fabriquer un objet technique, on réalise généralement…",
-        options: [
-            "Une analyse du besoin et une conception",
-            "Une destruction de l'objet",
-            "Une cuisson",
-            "Une récolte"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
 
-       "Économie familiale": [
-    {
-        question: "Un repas équilibré doit être…",
-        options: [
-            "Très sucré uniquement",
-            "Varié et adapté aux besoins du corps",
-            "Composé seulement de viande",
-            "Composé seulement de boissons"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Pourquoi faut-il se laver les mains avant de préparer un repas ?",
-        options: [
-            "Pour décorer les mains",
-            "Pour réduire les microbes et les contaminations",
-            "Pour avoir les mains froides",
-            "Pour gagner du temps"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel comportement favorise une bonne hygiène alimentaire ?",
-        options: [
-            "Manger sans se laver les mains",
-            "Conserver les aliments dans de bonnes conditions",
-            "Mélanger les aliments crus et cuits",
-            "Laisser les aliments à l'air libre longtemps"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Pourquoi faut-il conserver certains aliments au réfrigérateur ?",
-        options: [
-            "Pour les rendre plus lourds",
-            "Pour ralentir leur détérioration",
-            "Pour changer leur couleur",
-            "Pour augmenter leur teneur en sucre"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel élément est important pour une alimentation équilibrée ?",
-        options: [
-            "Manger toujours le même aliment",
-            "Varier les aliments",
-            "Supprimer toute l'eau",
-            "Manger uniquement des aliments sucrés"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Pourquoi faut-il nettoyer les ustensiles de cuisine après utilisation ?",
-        options: [
-            "Pour éviter l'accumulation de saletés et de microbes",
-            "Pour les rendre plus lourds",
-            "Pour changer leur forme",
-            "Pour économiser l'eau"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Que faut-il faire avant de consommer un aliment emballé ?",
-        options: [
-            "Vérifier son état et les informations de conservation",
-            "Le laisser au soleil",
-            "Retirer son emballage et attendre plusieurs jours",
-            "Le mélanger avec n'importe quel autre aliment"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi sépare-t-on les aliments crus des aliments cuits ?",
-        options: [
-            "Pour éviter certaines contaminations croisées",
-            "Pour augmenter leur température",
-            "Pour changer leur goût",
-            "Pour réduire leur poids"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel comportement permet de limiter le gaspillage alimentaire ?",
-        options: [
-            "Jeter systématiquement les restes",
-            "Planifier les quantités et utiliser les aliments correctement",
-            "Acheter sans vérifier ses besoins",
-            "Laisser les aliments se détériorer"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est l'intérêt de planifier un repas avant de faire les courses ?",
-        options: [
-            "Acheter uniquement ce qui est nécessaire",
-            "Acheter le plus possible",
-            "Éviter de regarder les prix",
-            "Acheter uniquement des sucreries"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-        "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la longueur ?",
-        options: ["Le kilogramme", "Le mètre", "Le litre", "Le seconde"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel instrument permet de mesurer une température ?",
-        options: ["Un voltmètre", "Un thermomètre", "Une balance", "Un ampèremètre"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la masse ?",
-        options: ["Le kilogramme", "Le mètre", "Le volt", "Le litre"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel appareil permet de mesurer une intensité électrique ?",
-        options: ["Un thermomètre", "Un ampèremètre", "Une règle", "Une balance"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est l'unité de l'intensité du courant électrique ?",
-        options: ["Le volt", "L'ampère", "Le watt", "L'ohm"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est l'unité de la tension électrique ?",
-        options: ["Le volt", "L'ampère", "Le kilogramme", "Le joule"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel matériau est un bon conducteur électrique ?",
-        options: ["Le cuivre", "Le plastique", "Le verre", "Le bois"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un circuit simple, quel élément permet d'ouvrir ou de fermer le circuit ?",
-        options: ["La pile", "L'ampoule", "L'interrupteur", "Le fil"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle formule permet de calculer une vitesse moyenne ?",
-        options: [
-            "v = distance × durée",
-            "v = distance / durée",
-            "v = durée / distance",
-            "v = distance + durée"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la formule chimique de l'eau ?",
-        options: ["CO₂", "O₂", "H₂O", "NaCl"],
-        reponse: 2,
-        niveau: "difficile"
-    }
-],
-        "3e": {
+        "Économie familiale": [
+            {
+                question: "Un repas équilibré doit être…",
+                options: [
+                    "Très sucré uniquement",
+                    "Varié et adapté aux besoins du corps",
+                    "Composé seulement de viande",
+                    "Composé seulement de boissons"
+                ],
+                reponse: 1,
+                niveau: "facile"
+            },
+            {
+                question: "Pourquoi faut-il se laver les mains avant de préparer un repas ?",
+                options: [
+                    "Pour décorer les mains",
+                    "Pour réduire les microbes et les contaminations",
+                    "Pour avoir les mains froides",
+                    "Pour gagner du temps"
+                ],
+                reponse: 1,
+                niveau: "moyen"
+            },
+            {
+                question: "Quel comportement favorise une bonne conservation des aliments ?",
+                options: [
+                    "Laisser tous les aliments au soleil",
+                    "Respecter les conditions de conservation",
+                    "Mélanger aliments crus et cuits",
+                    "Ignorer les dates de péremption"
+                ],
+                reponse: 1,
+                niveau: "difficile"
+            }
+        ]
 
-    "Mathématiques": [
-        {
-            question: "Résous : 2x + 5 = 17",
-            options: ["5", "6", "7", "8"],
-            reponse: 1,
-            niveau: "facile"
-        },
-        {
-            question: "Développe : 4(x + 3)",
-            options: ["4x + 3", "4x + 7", "4x + 12", "x + 12"],
-            reponse: 2,
-            niveau: "facile"
-        },
-        {
-            question: "Calcule : (-5) + 8",
-            options: ["-13", "-3", "3", "13"],
-            reponse: 2,
-            niveau: "facile"
-        },
-        {
-            question: "Résous : 3x - 7 = 11",
-            options: ["4", "5", "6", "7"],
-            reponse: 2,
-            niveau: "moyen"
-        },
-        {
-            question: "Factorise : 5x + 15",
-            options: [
-                "5(x + 3)",
-                "5(x + 15)",
-                "15(x + 5)",
-                "x(5 + 15)"
-            ],
-            reponse: 0,
-            niveau: "moyen"
-        },
-        {
-            question: "Quelle est la forme développée de (x + 2)(x + 3) ?",
-            options: [
-                "x² + 5x + 6",
-                "x² + 6",
-                "x² + 5x + 5",
-                "x² + 6x + 5"
-            ],
-            reponse: 0,
-            niveau: "moyen"
-        },
-        {
-            question: "Quelle est la racine carrée de 81 ?",
-            options: ["7", "8", "9", "10"],
-            reponse: 2,
-            niveau: "difficile"
-        },
-        {
-            question: "Un triangle rectangle possède des côtés de 6 cm et 8 cm. Quelle est la longueur de l'hypoténuse ?",
-            options: ["9 cm", "10 cm", "12 cm", "14 cm"],
-            reponse: 1,
-            niveau: "difficile"
-        },
-        {
-            question: "Résous : x² = 49",
-            options: ["x = 7 uniquement", "x = -7 uniquement", "x = 49", "x = -7 ou x = 7"],
-            reponse: 3,
-            niveau: "difficile"
-        },
-        {
-            question: "Un article coûte 25 000 F. Il bénéficie d'une réduction de 20 %. Quel est son nouveau prix ?",
-            options: ["5 000 F", "20 000 F", "21 000 F", "22 000 F"],
-            reponse: 1,
-            niveau: "difficile"
-        }
-    ],
+    }
+};
 
-            "Français": [
-    {
-        question: "Dans « Les élèves étudient leurs leçons », quel est le COD ?",
-        options: [
-            "Les élèves",
-            "étudient",
-            "leurs leçons",
-            "aucun"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le synonyme de « heureux » ?",
-        options: [
-            "Triste",
-            "Joyeux",
-            "Fatigué",
-            "En colère"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Nous partirons demain », quel est le temps du verbe ?",
-        options: [
-            "Présent",
-            "Imparfait",
-            "Futur simple",
-            "Passé composé"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Il travaille sérieusement », quelle est la nature de « sérieusement » ?",
-        options: [
-            "Nom",
-            "Adjectif",
-            "Adverbe",
-            "Pronom"
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle phrase contient un complément circonstanciel de lieu ?",
-        options: [
-            "Moussa lit un livre.",
-            "Moussa travaille rapidement.",
-            "Moussa travaille à Dakar.",
-            "Moussa est courageux."
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la voix de la phrase : « Le voleur a été arrêté par la police » ?",
-        options: [
-            "Voix active",
-            "Voix passive",
-            "Voix pronominale",
-            "Voix interrogative"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la figure de style dans « Cet homme est un lion » ?",
-        options: [
-            "Comparaison",
-            "Métaphore",
-            "Personnification",
-            "Antithèse"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans « Bien qu'il soit fatigué, il continue à travailler », quelle relation logique est exprimée ?",
-        options: [
-            "Cause",
-            "Conséquence",
-            "Concession",
-            "But"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle proposition est correctement accordée ?",
-        options: [
-            "Les filles sont arrivé.",
-            "Les filles sont arrivées.",
-            "Les filles sont arrivés.",
-            "Les filles sont arrivée."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans « Si j'avais étudié, j'aurais réussi », quel système de temps est utilisé ?",
-        options: [
-            "Présent + futur",
-            "Imparfait + conditionnel passé",
-            "Passé simple + futur",
-            "Présent + conditionnel présent"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-            "Anglais": [
-    {
-        question: "Choose the correct answer: If I ___ enough time, I would help you.",
-        options: ["have", "had", "will have", "has"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "What is the opposite of « difficult »?",
-        options: ["Easy", "Heavy", "Slow", "Weak"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct form: She ___ to school every day.",
-        options: ["go", "goes", "going", "gone"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Which sentence is in the present perfect?",
-        options: [
-            "I went to Dakar.",
-            "I am going to Dakar.",
-            "I have visited Dakar.",
-            "I will visit Dakar."
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct answer: They have lived here ___ 2020.",
-        options: ["for", "since", "during", "from"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "What does « You should study more » mean?",
-        options: [
-            "Tu dois arrêter d'étudier.",
-            "Tu devrais étudier davantage.",
-            "Tu étudies trop.",
-            "Tu ne peux pas étudier."
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct passive sentence.",
-        options: [
-            "The teacher corrected the exercise.",
-            "The exercise corrected the teacher.",
-            "The exercise was corrected by the teacher.",
-            "The teacher was correcting exercise."
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct conditional: If she studied more, she ___ better results.",
-        options: ["gets", "got", "would get", "will get"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Which sentence is grammatically correct?",
-        options: [
-            "He don't like coffee.",
-            "He doesn't likes coffee.",
-            "He doesn't like coffee.",
-            "He not like coffee."
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct reported speech: Mary said, « I am tired. »",
-        options: [
-            "Mary said that she was tired.",
-            "Mary said that I am tired.",
-            "Mary says that she was tired.",
-            "Mary said that she is tired."
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Histoire": [
-    {
-        question: "En quelle année débute la Première Guerre mondiale ?",
-        options: ["1912", "1914", "1916", "1918"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année se termine la Première Guerre mondiale ?",
-        options: ["1916", "1917", "1918", "1920"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel événement marque le début de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "L'invasion de la Pologne par l'Allemagne en 1939",
-            "La conférence de Berlin",
-            "La chute du mur de Berlin",
-            "L'indépendance du Sénégal"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année commence la Seconde Guerre mondiale ?",
-        options: ["1937", "1938", "1939", "1940"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel événement a lieu le 6 juin 1944 ?",
-        options: [
-            "La conférence de Berlin",
-            "Le débarquement de Normandie",
-            "La fin de la Première Guerre mondiale",
-            "L'indépendance du Sénégal"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "En quelle année l'Organisation des Nations unies (ONU) est-elle créée ?",
-        options: ["1939", "1945", "1950", "1960"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Le Sénégal accède à l'indépendance en…",
-        options: ["1956", "1958", "1960", "1963"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Qui fut le premier président du Sénégal indépendant ?",
-        options: [
-            "Léopold Sédar Senghor",
-            "Abdou Diouf",
-            "Abdoulaye Wade",
-            "Macky Sall"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel événement symbolise la fin de la guerre froide en Europe ?",
-        options: [
-            "La conférence de Berlin",
-            "La chute du mur de Berlin",
-            "Le débarquement de Normandie",
-            "La création de l'ONU"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel mouvement politique a favorisé la lutte pour l'indépendance de nombreux peuples colonisés après la Seconde Guerre mondiale ?",
-        options: [
-            "Les mouvements anticoloniaux",
-            "Les mouvements féodaux",
-            "Les mouvements monarchiques uniquement",
-            "Les mouvements industriels"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Géographie": [
-    {
-        question: "Quelle est la capitale du Sénégal ?",
-        options: ["Thiès", "Dakar", "Saint-Louis", "Ziguinchor"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel océan borde le Sénégal à l'ouest ?",
-        options: [
-            "Océan Indien",
-            "Océan Atlantique",
-            "Océan Pacifique",
-            "Océan Arctique"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Sur quel continent se trouve le Sénégal ?",
-        options: ["Asie", "Afrique", "Europe", "Amérique"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est la plus grande ville du Sénégal ?",
-        options: ["Dakar", "Thiès", "Touba", "Ziguinchor"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel fleuve porte le nom du pays qu'il borde au nord du Sénégal ?",
-        options: [
-            "Le fleuve Niger",
-            "Le fleuve Sénégal",
-            "Le fleuve Gambie",
-            "Le fleuve Congo"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle région du Sénégal se trouve au sud du pays et est séparée du reste du territoire par la Gambie ?",
-        options: [
-            "Le Ferlo",
-            "La Casamance",
-            "Le Cayor",
-            "Le Sine-Saloum"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Comment appelle-t-on le développement des villes et l'augmentation de la population urbaine ?",
-        options: [
-            "Déforestation",
-            "Urbanisation",
-            "Désertification",
-            "Irrigation"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel problème environnemental touche particulièrement les zones sèches du Sahel ?",
-        options: [
-            "La désertification",
-            "Les avalanches",
-            "Les glaciers",
-            "Les tsunamis"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel secteur économique est particulièrement important pour les populations rurales du Sénégal ?",
-        options: [
-            "L'agriculture",
-            "L'industrie automobile",
-            "L'industrie spatiale",
-            "La construction navale uniquement"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi les littoraux sont-ils souvent très peuplés ?",
-        options: [
-            "Ils facilitent notamment les activités économiques et les échanges",
-            "Ils sont toujours inhabités",
-            "Ils n'ont aucun intérêt économique",
-            "Ils sont toujours désertiques"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "SVT": [
-    {
-        question: "Quel organe permet principalement les échanges gazeux chez l'être humain ?",
-        options: ["Le cœur", "Les poumons", "L'estomac", "Le foie"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel élément du sang transporte principalement l'oxygène ?",
-        options: [
-            "Les globules rouges",
-            "Les plaquettes",
-            "Le plasma",
-            "Les globules blancs"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organe pompe le sang dans tout le corps ?",
-        options: ["Le cerveau", "Le cœur", "Les reins", "Les poumons"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le rôle principal des globules blancs ?",
-        options: [
-            "Transporter l'oxygène",
-            "Défendre l'organisme",
-            "Faire circuler le sang",
-            "Digérer les aliments"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel organe permet principalement la filtration du sang et la production de l'urine ?",
-        options: ["Le foie", "Les reins", "Le cœur", "Les poumons"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "La respiration cellulaire utilise notamment du dioxygène et produit de l'énergie ainsi que…",
-        options: [
-            "Du dioxyde de carbone et de l'eau",
-            "Du sel uniquement",
-            "Du fer",
-            "De l'azote uniquement"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle structure du poumon est spécialisée dans les échanges gazeux avec le sang ?",
-        options: [
-            "Les alvéoles pulmonaires",
-            "Les bronches uniquement",
-            "La trachée",
-            "Le diaphragme"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le rôle principal du système nerveux ?",
-        options: [
-            "Transporter les aliments",
-            "Recevoir, traiter et transmettre des informations",
-            "Produire l'urine",
-            "Digérer les protéines"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Comment appelle-t-on la transmission d'une information d'un neurone à un autre ?",
-        options: [
-            "La digestion",
-            "La transmission nerveuse",
-            "La respiration",
-            "La circulation"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel phénomène permet le passage des caractères héréditaires des parents aux enfants ?",
-        options: [
-            "L'hérédité",
-            "La digestion",
-            "La respiration",
-            "La circulation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Éducation civique": [
-    {
-        question: "Qu'est-ce qu'un citoyen ?",
-        options: [
-            "Une personne qui possède des droits et des devoirs dans une société",
-            "Une personne qui refuse toutes les lois",
-            "Une personne sans aucun droit",
-            "Une personne qui ne participe jamais à la vie de la société"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est un exemple de droit du citoyen ?",
-        options: [
-            "Le droit de voter selon les conditions prévues par la loi",
-            "Le droit de ne respecter aucune loi",
-            "Le droit de détruire les biens publics",
-            "Le droit d'empêcher les autres de s'exprimer"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est un devoir du citoyen ?",
-        options: [
-            "Respecter les lois",
-            "Refuser les règles",
-            "Détruire les biens publics",
-            "Empêcher les autres de voter"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel comportement favorise le vivre-ensemble ?",
-        options: [
-            "Le respect des autres",
-            "La violence",
-            "La discrimination",
-            "L'intolérance"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Pourquoi faut-il respecter les biens publics ?",
-        options: [
-            "Ils servent à la collectivité",
-            "Ils appartiennent à une seule personne",
-            "Ils n'ont aucune utilité",
-            "Ils peuvent être détruits sans conséquence"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "L'égalité devant la loi signifie que…",
-        options: [
-            "Tous doivent être traités selon les mêmes règles de droit",
-            "Les lois ne concernent que certaines personnes",
-            "Les plus riches sont au-dessus des lois",
-            "Chaque personne choisit les lois qu'elle veut respecter"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "La liberté d'expression doit s'exercer…",
-        options: [
-            "Dans le respect des lois et des droits des autres",
-            "Sans aucune limite",
-            "En empêchant les autres de parler",
-            "Uniquement sur Internet"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi les élections sont-elles importantes dans une démocratie ?",
-        options: [
-            "Elles permettent aux citoyens de participer au choix de leurs représentants",
-            "Elles permettent de supprimer toutes les lois",
-            "Elles donnent tous les pouvoirs à une seule personne",
-            "Elles empêchent les citoyens de participer"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel principe est essentiel dans une démocratie ?",
-        options: [
-            "Le respect des droits et libertés",
-            "La domination d'une seule personne",
-            "La suppression des élections",
-            "L'interdiction du débat"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel comportement est le plus adapté pour résoudre un conflit ?",
-        options: [
-            "Le dialogue et la recherche d'une solution pacifique",
-            "La violence",
-            "Les insultes",
-            "La vengeance"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Technologie": [
-    {
-        question: "Quel appareil permet de mesurer une température ?",
-        options: [
-            "Un thermomètre",
-            "Une balance",
-            "Une règle",
-            "Un chronomètre"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel élément permet d'ouvrir ou de fermer un circuit électrique ?",
-        options: [
-            "Une ampoule",
-            "Un interrupteur",
-            "Une pile",
-            "Un moteur"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle unité mesure la tension électrique ?",
-        options: [
-            "Le volt",
-            "L'ampère",
-            "Le watt",
-            "Le mètre"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Dans un circuit électrique, quel élément fournit généralement l'énergie ?",
-        options: [
-            "La pile",
-            "L'interrupteur",
-            "L'ampoule",
-            "Le fil"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel matériau est généralement un bon conducteur de l'électricité ?",
-        options: [
-            "Le plastique",
-            "Le bois",
-            "Le cuivre",
-            "Le verre"
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel outil permet de mesurer une longueur ?",
-        options: [
-            "Un thermomètre",
-            "Une règle",
-            "Un voltmètre",
-            "Une balance"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle principal d'un fusible ?",
-        options: [
-            "Produire de l'électricité",
-            "Protéger le circuit contre une surintensité",
-            "Éclairer une pièce",
-            "Mesurer la tension"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un schéma technique, les symboles servent principalement à…",
-        options: [
-            "Décorer le document",
-            "Représenter les éléments de manière conventionnelle",
-            "Remplacer toutes les mesures",
-            "Écrire un récit"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Avant de fabriquer un objet technique, il faut notamment…",
-        options: [
-            "Analyser le besoin et définir des solutions",
-            "Détruire un objet",
-            "Ignorer les contraintes",
-            "Choisir une couleur uniquement"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Une fonction technique décrit principalement…",
-        options: [
-            "Un rôle qu'un élément doit assurer dans l'objet",
-            "La couleur de l'objet",
-            "Le prix de vente uniquement",
-            "Le nom du fabricant"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Économie familiale": [
-    {
-        question: "Quel est le rôle principal d'une alimentation équilibrée ?",
-        options: [
-            "Répondre aux besoins nutritionnels du corps",
-            "Manger uniquement des aliments sucrés",
-            "Supprimer tous les légumes",
-            "Boire uniquement des boissons"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Pourquoi faut-il se laver les mains avant de préparer un repas ?",
-        options: [
-            "Pour réduire les risques de contamination",
-            "Pour refroidir les aliments",
-            "Pour changer le goût des aliments",
-            "Pour gagner du temps"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel comportement favorise une bonne hygiène alimentaire ?",
-        options: [
-            "Conserver correctement les aliments",
-            "Laisser les aliments au soleil",
-            "Mélanger les aliments crus et cuits",
-            "Ignorer les règles d'hygiène"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Pourquoi faut-il conserver certains aliments au réfrigérateur ?",
-        options: [
-            "Pour ralentir leur détérioration",
-            "Pour les rendre plus sucrés",
-            "Pour modifier leur couleur",
-            "Pour augmenter leur poids"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Pourquoi sépare-t-on les aliments crus des aliments cuits ?",
-        options: [
-            "Pour limiter les contaminations croisées",
-            "Pour augmenter leur température",
-            "Pour changer leur forme",
-            "Pour réduire leur quantité"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est un bon moyen de limiter le gaspillage alimentaire ?",
-        options: [
-            "Planifier les quantités nécessaires",
-            "Jeter systématiquement les restes",
-            "Acheter sans prévoir les besoins",
-            "Laisser les aliments se détériorer"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Pourquoi faut-il vérifier les informations figurant sur l'emballage d'un aliment ?",
-        options: [
-            "Pour connaître notamment sa conservation et sa date limite",
-            "Pour connaître sa couleur",
-            "Pour changer son goût",
-            "Pour savoir qui va le manger"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel élément est important lors de l'organisation d'un budget familial ?",
-        options: [
-            "Comparer les dépenses aux revenus",
-            "Dépenser sans compter",
-            "Ignorer les dépenses",
-            "Acheter tout ce qui est disponible"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel comportement permet de réaliser des économies lors des achats ?",
-        options: [
-            "Comparer les prix et acheter selon ses besoins",
-            "Acheter toujours le produit le plus cher",
-            "Acheter sans regarder les quantités",
-            "Acheter uniquement ce qui est à la mode"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi est-il important d'entretenir régulièrement les vêtements et le linge de maison ?",
-        options: [
-            "Pour préserver leur propreté et leur durée d'utilisation",
-            "Pour les rendre plus lourds",
-            "Pour changer leur matière",
-            "Pour les rendre jetables"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la puissance électrique ?",
-        options: ["Le volt", "L'ampère", "Le watt", "L'ohm"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel appareil mesure une tension électrique ?",
-        options: ["Un ampèremètre", "Un voltmètre", "Un thermomètre", "Une balance"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la résistance électrique ?",
-        options: ["L'ohm", "Le volt", "L'ampère", "Le watt"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle relation lie la puissance, la tension et l'intensité ?",
-        options: [
-            "P = U × I",
-            "P = U / I",
-            "P = I / U",
-            "P = U + I"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle formule permet de calculer la masse volumique ?",
-        options: [
-            "ρ = masse × volume",
-            "ρ = masse / volume",
-            "ρ = volume / masse",
-            "ρ = masse + volume"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Lors d'une combustion complète, le carbone réagit principalement avec…",
-        options: [
-            "Le dioxygène",
-            "Le diazote",
-            "Le dihydrogène",
-            "Le sel"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la formule chimique du dioxyde de carbone ?",
-        options: ["CO", "CO₂", "O₂", "H₂O"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un circuit en dérivation, la tension est…",
-        options: [
-            "La même aux bornes des dipôles branchés en parallèle",
-            "Toujours nulle",
-            "Toujours différente partout",
-            "Toujours égale à l'intensité"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle transformation correspond au passage de l'eau liquide à l'état gazeux ?",
-        options: [
-            "La fusion",
-            "La solidification",
-            "La vaporisation",
-            "La condensation"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle loi relie la tension U, la résistance R et l'intensité I dans un conducteur ohmique ?",
-        options: [
-            "U = R × I",
-            "U = R / I",
-            "U = I / R",
-            "U = R + I"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "2nde": {
-                "Mathématiques": [
-    {
-        question: "Résous : 2x + 6 = 14",
-        options: ["2", "3", "4", "5"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Calcule : 3² + 4²",
-        options: ["7", "12", "25", "49"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est la forme développée de 2(x + 5) ?",
-        options: ["2x + 5", "2x + 10", "x + 10", "2x + 7"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Résous : 5x - 10 = 0",
-        options: ["1", "2", "5", "10"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la valeur de f(2) si f(x) = 3x + 1 ?",
-        options: ["5", "6", "7", "8"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Résous l'inéquation : x + 3 > 7",
-        options: ["x > 3", "x > 4", "x < 4", "x > 7"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la pente d'une droite passant par A(1 ; 2) et B(3 ; 6) ?",
-        options: ["1", "2", "3", "4"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Résous : x² - 9 = 0",
-        options: ["x = 3 uniquement", "x = -3 uniquement", "x = -3 ou x = 3", "x = 9"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = x² ?",
-        options: ["x", "2x", "x²", "2"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un triangle rectangle, les côtés de l'angle droit mesurent 6 cm et 8 cm. Quelle est l'hypoténuse ?",
-        options: ["9 cm", "10 cm", "12 cm", "14 cm"],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-                "Français": [
-    {
-        question: "Quelle est la fonction du mot « rapidement » dans « Il court rapidement » ?",
-        options: [
-            "Complément circonstanciel de manière",
-            "COD",
-            "Sujet",
-            "Attribut du sujet"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Les élèves lisent un roman », quel est le COD ?",
-        options: [
-            "Les élèves",
-            "lisent",
-            "un roman",
-            "aucun"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le temps du verbe dans « Nous travaillerons demain » ?",
-        options: [
-            "Présent",
-            "Imparfait",
-            "Futur simple",
-            "Passé composé"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel registre de langue utilise principalement des expressions familières ?",
-        options: [
-            "Soutenu",
-            "Courant",
-            "Familier",
-            "Scientifique"
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle figure de style compare deux éléments avec un outil de comparaison comme « comme » ?",
-        options: [
-            "Métaphore",
-            "Comparaison",
-            "Personnification",
-            "Hyperbole"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Dans une narration, quel est généralement le rôle du narrateur ?",
-        options: [
-            "Raconter les événements",
-            "Calculer les distances",
-            "Donner uniquement des définitions",
-            "Décrire uniquement les personnages"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle phrase est correctement transformée à la voix passive ?",
-        options: [
-            "Le professeur corrige les copies.",
-            "Les copies corrigent le professeur.",
-            "Les copies sont corrigées par le professeur.",
-            "Le professeur est corrigé les copies."
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle figure de style trouve-t-on dans « Cette ville ne dort jamais » ?",
-        options: [
-            "Personnification",
-            "Comparaison",
-            "Énumération",
-            "Litote"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans « Bien qu'il soit fatigué, il continue son travail », quelle relation logique est exprimée ?",
-        options: [
-            "Cause",
-            "Conséquence",
-            "Concession",
-            "But"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le but principal d'une argumentation ?",
-        options: [
-            "Raconter une histoire imaginaire",
-            "Défendre une idée et convaincre ou persuader",
-            "Décrire uniquement un paysage",
-            "Donner uniquement une définition"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-                "Anglais": [
-    {
-        question: "Choose the correct answer: She ___ to school every day.",
-        options: ["go", "goes", "going", "gone"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "What is the opposite of « expensive »?",
-        options: ["Cheap", "Heavy", "Difficult", "Beautiful"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct answer: They ___ very happy today.",
-        options: ["is", "am", "are", "be"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Which sentence is in the present perfect?",
-        options: [
-            "I went to Dakar.",
-            "I am going to Dakar.",
-            "I have visited Dakar.",
-            "I will visit Dakar."
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct answer: He has lived here ___ five years.",
-        options: ["since", "for", "during", "from"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "What does « You should work harder » mean?",
-        options: [
-            "Tu devrais travailler davantage.",
-            "Tu ne dois pas travailler.",
-            "Tu as fini de travailler.",
-            "Tu travailles trop."
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct passive sentence.",
-        options: [
-            "The teacher corrected the exercise.",
-            "The exercise was corrected by the teacher.",
-            "The exercise corrected the teacher.",
-            "The teacher was correct the exercise."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct conditional: If I had more time, I ___ more.",
-        options: ["study", "studied", "would study", "will study"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Which sentence is grammatically correct?",
-        options: [
-            "She don't like music.",
-            "She doesn't likes music.",
-            "She doesn't like music.",
-            "She not likes music."
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct reported speech: John said, « I am tired. »",
-        options: [
-            "John said that he was tired.",
-            "John said that I am tired.",
-            "John says that he was tired.",
-            "John said that he is tired."
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-                "Histoire-Géographie": [
-    {
-        question: "Quel événement marque le début de la Révolution française ?",
-        options: [
-            "La prise de la Bastille en 1789",
-            "La chute du mur de Berlin",
-            "La création de l'ONU",
-            "La conférence de Berlin"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année débute la Révolution française ?",
-        options: ["1776", "1789", "1815", "1848"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année débute la Première Guerre mondiale ?",
-        options: ["1912", "1914", "1916", "1918"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel océan borde le Sénégal à l'ouest ?",
-        options: [
-            "Océan Indien",
-            "Océan Atlantique",
-            "Océan Pacifique",
-            "Océan Arctique"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la capitale du Sénégal ?",
-        options: ["Thiès", "Dakar", "Saint-Louis", "Ziguinchor"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Le Sahel se situe principalement entre…",
-        options: [
-            "Le Sahara et les régions plus humides du sud",
-            "L'Europe et l'Asie",
-            "Les régions polaires",
-            "Les océans Atlantique et Pacifique"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel phénomène désigne l'augmentation de la population vivant dans les villes ?",
-        options: [
-            "La désertification",
-            "L'urbanisation",
-            "La déforestation",
-            "L'irrigation"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel événement marque la fin de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "La capitulation de l'Allemagne en 1945",
-            "La conférence de Berlin",
-            "L'indépendance du Sénégal",
-            "La prise de la Bastille"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "En quelle année l'ONU est-elle créée ?",
-        options: ["1939", "1942", "1945", "1950"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel facteur favorise fortement les échanges entre les territoires ?",
-        options: [
-            "Les réseaux de transport et de communication",
-            "L'isolement total",
-            "L'absence de routes",
-            "La fermeture des frontières"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-                "SVT": [
-    {
-        question: "Quel est le rôle principal de la cellule ?",
-        options: [
-            "Elle est l'unité de base du vivant",
-            "Elle produit uniquement de l'eau",
-            "Elle sert uniquement à respirer",
-            "Elle existe seulement chez les animaux"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organite contient l'information génétique principale d'une cellule eucaryote ?",
-        options: [
-            "Le noyau",
-            "La membrane",
-            "Le cytoplasme",
-            "La vacuole"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organe assure principalement les échanges gazeux chez l'être humain ?",
-        options: [
-            "Le cœur",
-            "Les poumons",
-            "Le foie",
-            "Les reins"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le rôle principal des globules rouges ?",
-        options: [
-            "Défendre l'organisme",
-            "Transporter principalement le dioxygène",
-            "Faire digérer les aliments",
-            "Produire les hormones"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle de l'ADN ?",
-        options: [
-            "Stocker l'information génétique",
-            "Transporter l'oxygène",
-            "Digérer les aliments",
-            "Produire directement de l'énergie"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "La photosynthèse permet aux végétaux chlorophylliens de produire principalement…",
-        options: [
-            "De la matière organique grâce à la lumière",
-            "Uniquement de l'eau",
-            "Du sel minéral",
-            "Du dioxygène uniquement"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle principal des enzymes digestives ?",
-        options: [
-            "Accélérer la transformation des aliments",
-            "Transporter le sang",
-            "Produire des globules rouges",
-            "Commander les mouvements"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel système permet principalement la communication rapide entre les différentes parties du corps ?",
-        options: [
-            "Le système nerveux",
-            "Le système digestif",
-            "Le système osseux",
-            "Le système respiratoire"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Comment appelle-t-on l'ensemble des réactions chimiques qui se déroulent dans une cellule ?",
-        options: [
-            "Le métabolisme",
-            "La respiration",
-            "La digestion uniquement",
-            "La circulation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Pourquoi la diversité génétique est-elle importante dans une population ?",
-        options: [
-            "Elle favorise la diversité des caractères et peut permettre l'adaptation",
-            "Elle supprime tous les caractères héréditaires",
-            "Elle empêche toute évolution",
-            "Elle rend tous les individus identiques"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-                "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la longueur ?",
-        options: ["Le kilogramme", "Le mètre", "Le litre", "Le seconde"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel instrument permet de mesurer une température ?",
-        options: ["Un voltmètre", "Un thermomètre", "Une balance", "Un ampèremètre"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la masse ?",
-        options: ["Le kilogramme", "Le mètre", "Le volt", "Le litre"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel appareil permet de mesurer une intensité électrique ?",
-        options: ["Un thermomètre", "Un ampèremètre", "Une règle", "Une balance"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est l'unité de l'intensité du courant électrique ?",
-        options: ["Le volt", "L'ampère", "Le watt", "L'ohm"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est l'unité de la tension électrique ?",
-        options: ["Le volt", "L'ampère", "Le kilogramme", "Le joule"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel matériau est un bon conducteur électrique ?",
-        options: ["Le cuivre", "Le plastique", "Le verre", "Le bois"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un circuit simple, quel élément permet d'ouvrir ou de fermer le circuit ?",
-        options: ["La pile", "L'ampoule", "L'interrupteur", "Le fil"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle formule permet de calculer une vitesse moyenne ?",
-        options: [
-            "v = distance × durée",
-            "v = distance / durée",
-            "v = durée / distance",
-            "v = distance + durée"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la formule chimique de l'eau ?",
-        options: ["CO₂", "O₂", "H₂O", "NaCl"],
-        reponse: 2,
-        niveau: "difficile"
-    }
-],
-                
-                "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la masse dans le Système international ?",
-        options: ["Le gramme", "Le kilogramme", "Le litre", "Le newton"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la longueur dans le Système international ?",
-        options: ["Le mètre", "Le kilomètre", "Le centimètre", "Le millimètre"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel instrument permet de mesurer une tension électrique ?",
-        options: ["Un ampèremètre", "Un voltmètre", "Un thermomètre", "Une balance"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la tension électrique ?",
-        options: ["L'ampère", "Le watt", "Le volt", "L'ohm"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle relation permet de calculer la vitesse moyenne ?",
-        options: [
-            "vitesse = distance × durée",
-            "vitesse = distance / durée",
-            "vitesse = durée / distance",
-            "vitesse = distance + durée"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel état de la matière possède un volume propre mais pas de forme propre ?",
-        options: ["Solide", "Liquide", "Gaz", "Plasma"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la formule chimique de l'eau ?",
-        options: ["CO₂", "O₂", "H₂O", "NaCl"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel gaz est principalement consommé lors de la combustion ?",
-        options: [
-            "Le dioxyde de carbone",
-            "Le dioxygène",
-            "Le diazote",
-            "La vapeur d'eau"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans un circuit électrique en série, l'intensité du courant est…",
-        options: [
-            "La même en tout point du circuit",
-            "Toujours nulle",
-            "Différente à chaque point",
-            "Toujours égale à zéro"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle expression permet de calculer la masse volumique ?",
-        options: [
-            "ρ = volume / masse",
-            "ρ = masse / volume",
-            "ρ = masse × volume",
-            "ρ = masse + volume"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-    "1ere": {
-        "Mathématiques": [
-    {
-        question: "Résous : 2x + 4 = 12",
-        options: ["2", "4", "6", "8"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = x² ?",
-        options: ["x", "2x", "x²", "2"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Calcule : 3² + 4²",
-        options: ["7", "12", "25", "49"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Résous : 3x - 9 = 0",
-        options: ["2", "3", "4", "5"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = 3x + 5 ?",
-        options: ["3", "5", "3x", "8"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la solution de x² = 16 ?",
-        options: ["x = 4 uniquement", "x = -4 uniquement", "x = -4 ou x = 4", "x = 16"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = x³ ?",
-        options: ["x²", "2x", "3x²", "3x"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la limite de 1/x lorsque x tend vers +∞ ?",
-        options: ["0", "1", "+∞", "-∞"],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Résous : x² - 5x + 6 = 0",
-        options: [
-            "x = 1 ou x = 6",
-            "x = 2 ou x = 3",
-            "x = -2 ou x = -3",
-            "x = 0 ou x = 6"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Si f(x) = 2x² - 3x + 1, quelle est f'(x) ?",
-        options: [
-            "2x - 3",
-            "4x - 3",
-            "4x + 1",
-            "2x² - 3"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-        "Français": [
-    {
-        question: "Quel est le principal objectif d'un texte argumentatif ?",
-        options: [
-            "Raconter une histoire",
-            "Défendre une idée et convaincre",
-            "Décrire uniquement un paysage",
-            "Donner une recette"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle figure de style établit un rapprochement avec un outil de comparaison ?",
-        options: [
-            "La métaphore",
-            "La comparaison",
-            "L'hyperbole",
-            "La personnification"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le temps du verbe dans « Nous partirons demain » ?",
-        options: [
-            "Présent",
-            "Imparfait",
-            "Futur simple",
-            "Passé simple"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Dans « Les élèves ont terminé leur travail », quel est le COD ?",
-        options: [
-            "Les élèves",
-            "ont terminé",
-            "leur travail",
-            "aucun"
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle figure de style trouve-t-on dans « Cette ville dort » ?",
-        options: [
-            "Personnification",
-            "Comparaison",
-            "Litote",
-            "Énumération"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Dans une argumentation, comment appelle-t-on l'idée principale défendue par l'auteur ?",
-        options: [
-            "La thèse",
-            "L'exemple",
-            "La narration",
-            "La description"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle relation logique est exprimée dans « Il pleut, donc nous resterons à la maison » ?",
-        options: [
-            "La cause",
-            "La conséquence",
-            "La concession",
-            "Le but"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle phrase contient une proposition subordonnée circonstancielle de concession ?",
-        options: [
-            "Parce qu'il travaille, il réussit.",
-            "Bien qu'il soit fatigué, il continue.",
-            "Il travaille pour réussir.",
-            "Quand il arrive, nous partons."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel registre de langue est principalement utilisé dans un texte officiel ou administratif ?",
-        options: [
-            "Familier",
-            "Argotique",
-            "Soutenu",
-            "Populaire"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans une dissertation, à quoi sert principalement la conclusion ?",
-        options: [
-            "À présenter un nouveau sujet sans lien",
-            "À résumer le raisonnement et répondre à la problématique",
-            "À supprimer les arguments",
-            "À raconter une autre histoire"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-        "Anglais": [
-    {
-        question: "Choose the correct answer: If I had more time, I ___ more books.",
-        options: ["read", "will read", "would read", "am reading"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "What is the opposite of « increase »?",
-        options: ["Decrease", "Improve", "Develop", "Create"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct form: She ___ English for five years.",
-        options: ["studies", "has studied", "studied", "is study"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Which sentence is in the present perfect?",
-        options: [
-            "They went to Dakar.",
-            "They are going to Dakar.",
-            "They have visited Dakar.",
-            "They will visit Dakar."
-        ],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct answer: You ___ see a doctor if you feel sick.",
-        options: ["should", "would", "might have", "were"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "What does « Despite the rain, they continued playing » mean?",
-        options: [
-            "À cause de la pluie, ils ont arrêté de jouer.",
-            "Malgré la pluie, ils ont continué à jouer.",
-            "Ils ont commencé à jouer après la pluie.",
-            "Ils n'ont pas joué à cause du mauvais temps."
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct passive form: « People speak English worldwide. »",
-        options: [
-            "English speaks worldwide.",
-            "English is spoken worldwide.",
-            "English was spoken worldwide.",
-            "English has spoken worldwide."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct conditional: If she studied harder, she ___ better results.",
-        options: ["gets", "got", "would get", "will get"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Which sentence is grammatically correct?",
-        options: [
-            "He has been studying since two hours.",
-            "He has been studying for two hours.",
-            "He is studying since two hours.",
-            "He studied since two hours."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct reported speech: Sarah said, « I will help you. »",
-        options: [
-            "Sarah said that she would help me.",
-            "Sarah said that she will help me.",
-            "Sarah says that she would help me.",
-            "Sarah said that I would help her."
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-        "Histoire-Géographie": [
-    {
-        question: "En quelle année commence la Première Guerre mondiale ?",
-        options: ["1912", "1914", "1916", "1918"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année se termine la Première Guerre mondiale ?",
-        options: ["1916", "1917", "1918", "1920"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel événement marque le début de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "L'invasion de la Pologne par l'Allemagne en 1939",
-            "La création de l'ONU",
-            "La conférence de Berlin",
-            "L'indépendance du Sénégal"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année l'Organisation des Nations unies est-elle créée ?",
-        options: ["1939", "1942", "1945", "1950"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel événement marque la fin de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "La capitulation de l'Allemagne en 1945",
-            "La conférence de Berlin",
-            "La création de l'Union européenne",
-            "L'indépendance du Sénégal"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Le Sénégal accède à l'indépendance en…",
-        options: ["1956", "1958", "1960", "1963"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel phénomène désigne l'augmentation de la population vivant dans les villes ?",
-        options: [
-            "La déforestation",
-            "L'urbanisation",
-            "La désertification",
-            "L'industrialisation"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel espace géographique est particulièrement marqué par les échanges internationaux et les grandes métropoles ?",
-        options: [
-            "Les espaces polaires",
-            "Les grands espaces urbains et littoraux",
-            "Les déserts uniquement",
-            "Les régions montagneuses isolées"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel phénomène correspond à l'interconnexion croissante des économies, des sociétés et des territoires ?",
-        options: [
-            "La mondialisation",
-            "La désertification",
-            "L'exode rural uniquement",
-            "La déforestation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel facteur joue un rôle important dans les échanges entre les différentes régions du monde ?",
-        options: [
-            "Les réseaux de transport et de communication",
-            "L'absence totale de routes",
-            "L'isolement des populations",
-            "La fermeture de tous les ports"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-        "SVT": [
-    {
-        question: "Quelle molécule porte l'information génétique dans les cellules ?",
-        options: ["L'ADN", "Le glucose", "L'eau", "Le dioxygène"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle structure contient généralement l'ADN dans une cellule eucaryote ?",
-        options: ["Le noyau", "La membrane", "Le cytoplasme", "La vacuole"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organe assure principalement les échanges gazeux chez l'être humain ?",
-        options: ["Le cœur", "Les poumons", "Les reins", "Le foie"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le rôle principal des globules rouges ?",
-        options: [
-            "Défendre l'organisme",
-            "Transporter principalement le dioxygène",
-            "Faire coaguler le sang",
-            "Produire des hormones"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle principal des enzymes ?",
-        options: [
-            "Accélérer les réactions chimiques de l'organisme",
-            "Transporter le dioxygène",
-            "Stocker l'information génétique",
-            "Former les os"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "La photosynthèse permet aux végétaux chlorophylliens de produire de la matière organique grâce notamment…",
-        options: [
-            "À la lumière, l'eau et le dioxyde de carbone",
-            "Au sel et à l'oxygène uniquement",
-            "Au fer et au glucose",
-            "À l'azote uniquement"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la fonction principale d'un neurone ?",
-        options: [
-            "Transmettre des informations nerveuses",
-            "Transporter le sang",
-            "Digérer les aliments",
-            "Produire l'urine"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Comment appelle-t-on la division d'une cellule donnant deux cellules génétiquement identiques ?",
-        options: [
-            "La méiose",
-            "La mitose",
-            "La fécondation",
-            "La mutation"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel phénomène permet la transmission des caractères héréditaires des parents aux descendants ?",
-        options: [
-            "L'hérédité",
-            "La digestion",
-            "La respiration",
-            "La circulation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel processus produit de l'énergie utilisable par la cellule à partir notamment du glucose et du dioxygène ?",
-        options: [
-            "La respiration cellulaire",
-            "La photosynthèse",
-            "La digestion mécanique",
-            "La transpiration"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-        "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la quantité de matière ?",
-        options: ["Le gramme", "La mole", "Le litre", "Le kilogramme"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de la tension électrique ?",
-        options: ["L'ampère", "Le volt", "L'ohm", "Le watt"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle grandeur électrique est mesurée avec un ampèremètre ?",
-        options: [
-            "La tension",
-            "La résistance",
-            "L'intensité du courant",
-            "La puissance"
-        ],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle relation correspond à la loi d'Ohm ?",
-        options: [
-            "U = R × I",
-            "U = R / I",
-            "I = U × R",
-            "R = U × I"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est l'unité de l'énergie dans le Système international ?",
-        options: ["Le watt", "Le joule", "Le volt", "L'ampère"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle particule porte une charge électrique négative ?",
-        options: ["Le proton", "Le neutron", "L'électron", "Le noyau"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle expression permet de calculer la puissance électrique ?",
-        options: [
-            "P = U × I",
-            "P = U / I",
-            "P = R × U",
-            "P = I / U"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans une transformation chimique, les atomes sont-ils créés ou détruits ?",
-        options: [
-            "Oui, toujours",
-            "Non, ils sont réarrangés",
-            "Ils disparaissent complètement",
-            "Ils deviennent tous des électrons"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel est le pH d'une solution neutre à température ambiante ?",
-        options: ["0", "5", "7", "14"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle grandeur mesure la quantité de matière d'un système chimique ?",
-        options: [
-            "La masse uniquement",
-            "Le volume uniquement",
-            "La quantité de matière en mole",
-            "La température uniquement"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    }
-],
-        "terminale": {
-            "Mathématiques": [
-    {
-        question: "Quelle est la dérivée de f(x) = x³ ?",
-        options: ["x²", "2x", "3x²", "3x"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = 5x + 2 ?",
-        options: ["2", "5", "5x", "7"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Résous : 2x - 6 = 0",
-        options: ["2", "3", "4", "6"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est la primitive de f(x) = 2x ?",
-        options: ["x²", "2x²", "x", "2"],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = eˣ ?",
-        options: ["1", "x", "eˣ", "xeˣ"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "Résous : ln(x) = 0",
-        options: ["x = 0", "x = 1", "x = e", "x = -1"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la limite de 1/x lorsque x tend vers +∞ ?",
-        options: ["-∞", "0", "1", "+∞"],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle est la dérivée de f(x) = ln(x), pour x > 0 ?",
-        options: ["ln(x)", "x", "1/x", "eˣ"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Résous : x² - 5x + 6 = 0",
-        options: [
-            "x = 1 ou x = 6",
-            "x = 2 ou x = 3",
-            "x = -2 ou x = -3",
-            "x = 0 ou x = 6"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Une urne contient 3 boules rouges et 2 boules bleues. Quelle est la probabilité de tirer une boule rouge ?",
-        options: ["2/5", "3/5", "1/2", "3/2"],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-            "Français": [
-    {
-        question: "Quel est le principal objectif d'un texte argumentatif ?",
-        options: [
-            "Raconter une histoire",
-            "Défendre une idée et convaincre",
-            "Décrire uniquement un lieu",
-            "Donner une recette"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle figure de style rapproche deux éléments avec un outil de comparaison ?",
-        options: [
-            "La métaphore",
-            "La comparaison",
-            "L'hyperbole",
-            "La personnification"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Dans une argumentation, comment appelle-t-on l'idée principale défendue par l'auteur ?",
-        options: [
-            "La thèse",
-            "L'exemple",
-            "La narration",
-            "La description"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le but principal d'une introduction de dissertation ?",
-        options: [
-            "Donner directement la conclusion",
-            "Présenter le sujet et poser la problématique",
-            "Raconter une histoire personnelle",
-            "Supprimer les arguments"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle figure de style trouve-t-on dans « Cette femme est un ange » ?",
-        options: [
-            "Comparaison",
-            "Métaphore",
-            "Personnification",
-            "Antithèse"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle relation logique est exprimée dans « Il a beaucoup travaillé, donc il a réussi » ?",
-        options: [
-            "La cause",
-            "La conséquence",
-            "La concession",
-            "Le but"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel procédé consiste à exagérer volontairement une idée ?",
-        options: [
-            "L'ironie",
-            "L'hyperbole",
-            "La comparaison",
-            "L'euphémisme"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans une dissertation, que doit principalement faire le développement ?",
-        options: [
-            "Présenter et développer les arguments",
-            "Répéter uniquement le sujet",
-            "Donner seulement une définition",
-            "Terminer le devoir"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel registre de langue est généralement associé à une expression très recherchée et élaborée ?",
-        options: [
-            "Familier",
-            "Populaire",
-            "Soutenu",
-            "Argotique"
-        ],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "À quoi sert principalement la conclusion d'une dissertation ?",
-        options: [
-            "À présenter la problématique pour la première fois",
-            "À faire le bilan du raisonnement et répondre à la problématique",
-            "À introduire tous les nouveaux arguments",
-            "À raconter une nouvelle histoire"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-            "Anglais": [
-    {
-        question: "Choose the correct answer: If I had known, I ___ you.",
-        options: ["would tell", "would have told", "will tell", "told"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "What is the closest meaning of « however »?",
-        options: ["Therefore", "Nevertheless", "Because", "Finally"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Choose the correct form: She ___ English since 2020.",
-        options: ["studies", "studied", "has been studying", "is study"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Which sentence is in the passive voice?",
-        options: [
-            "People built the school in 2010.",
-            "The school was built in 2010.",
-            "People are building the school.",
-            "The school built people."
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct answer: By next year, they ___ their studies.",
-        options: ["finish", "finished", "will have finished", "have finished"],
-        reponse: 2,
-        niveau: "moyen"
-    },
-    {
-        question: "What does « Although he was tired, he continued working » mean?",
-        options: [
-            "Parce qu'il était fatigué, il a arrêté de travailler.",
-            "Bien qu'il soit fatigué, il a continué à travailler.",
-            "Il a travaillé seulement après avoir dormi.",
-            "Il n'était pas fatigué."
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Choose the correct conditional: If I were you, I ___ harder.",
-        options: ["study", "studied", "would study", "will study"],
-        reponse: 2,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct reported speech: He said, « I have finished my work. »",
-        options: [
-            "He said that he had finished his work.",
-            "He said that he has finished his work.",
-            "He says that he had finished his work.",
-            "He said that I had finished my work."
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Which sentence is grammatically correct?",
-        options: [
-            "If she would study, she would pass.",
-            "If she studied, she would pass.",
-            "If she studies, she would passed.",
-            "If she had study, she passes."
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Choose the correct form: The project ___ before the end of the month.",
-        options: [
-            "will complete",
-            "will have been completed",
-            "has completed",
-            "is completing"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-            "Histoire-Géographie": [
-    {
-        question: "En quelle année l'Organisation des Nations unies (ONU) est-elle créée ?",
-        options: ["1939", "1945", "1948", "1950"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel événement marque le début de la Seconde Guerre mondiale en Europe ?",
-        options: [
-            "La prise de la Bastille",
-            "L'invasion de la Pologne par l'Allemagne en 1939",
-            "La création de l'ONU",
-            "La chute du mur de Berlin"
-        ],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "En quelle année le Sénégal devient-il indépendant ?",
-        options: ["1956", "1958", "1960", "1963"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quel système politique s'oppose principalement au bloc soviétique pendant la guerre froide ?",
-        options: [
-            "Le bloc occidental",
-            "Le bloc colonial",
-            "Le bloc impérial",
-            "Le bloc féodal"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel événement symbolise la fin de la guerre froide en Europe ?",
-        options: [
-            "La conférence de Berlin",
-            "La chute du mur de Berlin",
-            "La création de l'ONU",
-            "Le débarquement de Normandie"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel phénomène désigne l'intensification des échanges entre les différentes régions du monde ?",
-        options: [
-            "La mondialisation",
-            "La désertification",
-            "La déforestation",
-            "L'autarcie"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel acteur joue un rôle majeur dans le commerce international grâce à ses ports, entreprises et investissements ?",
-        options: [
-            "Les grandes puissances économiques",
-            "Les villages isolés",
-            "Les espaces polaires uniquement",
-            "Les régions sans infrastructures"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel phénomène correspond à l'augmentation de la population vivant en ville ?",
-        options: [
-            "La ruralisation",
-            "L'urbanisation",
-            "La désertification",
-            "La déforestation"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel espace est particulièrement important dans les échanges mondiaux ?",
-        options: [
-            "Les grands littoraux et façades maritimes",
-            "Les déserts inhabités uniquement",
-            "Les espaces polaires uniquement",
-            "Les zones totalement isolées"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel enjeu environnemental est fortement lié à l'augmentation des activités humaines et des émissions de gaz à effet de serre ?",
-        options: [
-            "Le changement climatique",
-            "La disparition des continents",
-            "La rotation de la Terre",
-            "La création des océans"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-            "SVT": [
-    {
-        question: "Quelle molécule porte l'information génétique ?",
-        options: ["L'ADN", "Le glucose", "L'eau", "Le dioxygène"],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel processus permet de produire deux cellules génétiquement identiques à partir d'une cellule mère ?",
-        options: ["La méiose", "La mitose", "La fécondation", "La mutation"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quel est le rôle principal des chromosomes ?",
-        options: [
-            "Porter l'information génétique",
-            "Transporter le sang",
-            "Digérer les aliments",
-            "Produire directement l'oxygène"
-        ],
-        reponse: 0,
-        niveau: "facile"
-    },
-    {
-        question: "Quel organe assure principalement les échanges gazeux chez l'être humain ?",
-        options: ["Le cœur", "Les poumons", "Le foie", "Les reins"],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle principal des globules blancs ?",
-        options: [
-            "Transporter le dioxygène",
-            "Participer à la défense de l'organisme",
-            "Transporter les nutriments uniquement",
-            "Produire l'urine"
-        ],
-        reponse: 1,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel phénomène permet le passage d'une information génétique d'une génération à l'autre ?",
-        options: [
-            "L'hérédité",
-            "La digestion",
-            "La respiration",
-            "La circulation"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle de l'ARN messager dans la synthèse des protéines ?",
-        options: [
-            "Transporter l'information nécessaire à la synthèse d'une protéine",
-            "Détruire les chromosomes",
-            "Produire directement les lipides",
-            "Remplacer les globules rouges"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Une mutation correspond à…",
-        options: [
-            "Une modification de la séquence de l'ADN",
-            "Une destruction de toutes les cellules",
-            "Une transformation du sang en eau",
-            "Une disparition automatique d'un chromosome"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel processus permet la production de gamètes chez l'être humain ?",
-        options: [
-            "La mitose uniquement",
-            "La méiose",
-            "La respiration",
-            "La digestion"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel mécanisme permet à une cellule de produire une copie de son ADN avant une division cellulaire ?",
-        options: [
-            "La réplication de l'ADN",
-            "La digestion",
-            "La transcription uniquement",
-            "La respiration"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    }
-],
-    "Physique-Chimie": [
-    {
-        question: "Quelle est l'unité de la quantité de matière ?",
-        options: ["Le gramme", "La mole", "Le litre", "Le kilogramme"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle particule porte une charge électrique négative ?",
-        options: ["Le proton", "Le neutron", "L'électron", "Le noyau"],
-        reponse: 2,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle est l'unité de l'énergie dans le Système international ?",
-        options: ["Le watt", "Le joule", "Le volt", "L'ampère"],
-        reponse: 1,
-        niveau: "facile"
-    },
-    {
-        question: "Quelle relation correspond à la loi d'Ohm ?",
-        options: [
-            "U = R × I",
-            "U = R / I",
-            "I = U × R",
-            "R = U × I"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle relation permet de calculer la puissance électrique ?",
-        options: [
-            "P = U × I",
-            "P = U / I",
-            "P = R × U",
-            "P = I / U"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quelle est la formule de la concentration molaire ?",
-        options: [
-            "C = n / V",
-            "C = V / n",
-            "C = n × V",
-            "C = n + V"
-        ],
-        reponse: 0,
-        niveau: "moyen"
-    },
-    {
-        question: "Quel est le rôle d'un catalyseur lors d'une réaction chimique ?",
-        options: [
-            "Accélérer la réaction sans être consommé globalement",
-            "Empêcher toute réaction",
-            "Créer de nouveaux éléments chimiques",
-            "Augmenter uniquement la masse des réactifs"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quel phénomène décrit le passage d'un électron d'un niveau d'énergie à un autre dans un atome ?",
-        options: [
-            "Une transition électronique",
-            "Une combustion",
-            "Une fusion",
-            "Une évaporation"
-        ],
-        reponse: 0,
-        niveau: "difficile"
-    },
-    {
-        question: "Quelle expression donne l'énergie cinétique d'un objet de masse m se déplaçant à la vitesse v ?",
-        options: [
-            "Ec = m × v",
-            "Ec = 1/2 × m × v²",
-            "Ec = m / v",
-            "Ec = 2 × m × v"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    },
-    {
-        question: "Dans une réaction d'oxydoréduction, une oxydation correspond à…",
-        options: [
-            "Un gain d'électrons",
-            "Une perte d'électrons",
-            "Un gain de neutrons",
-            "Une perte de protons uniquement"
-        ],
-        reponse: 1,
-        niveau: "difficile"
-    }
-],
-            
 
 // ===============================
 // 🚀 COMMENCER LE QUIZ
@@ -4380,12 +1265,20 @@ const banqueQuestions = {
 
 function commencerQuiz() {
 
-    let classe = document.getElementById("classeQuiz").value;
-    let matiere = document.getElementById("matiereQuiz").value;
-    let niveau = document.getElementById("niveauQuiz").value;
-     alert("✅ Le bouton fonctionne !");
-    
-    if (classe === "" || matiere === "" || niveau === "") {
+    let classe =
+        document.getElementById("classeQuiz").value;
+
+    let matiere =
+        document.getElementById("matiereQuiz").value;
+
+    let niveau =
+        document.getElementById("niveauQuiz").value;
+
+    if (
+        classe === "" ||
+        matiere === "" ||
+        niveau === ""
+    ) {
 
         document.getElementById("messageQuiz").innerHTML =
             "⚠️ Choisis ta classe, ta matière et ton niveau.";
@@ -4407,17 +1300,19 @@ function commencerQuiz() {
         return;
     }
 
-    // On privilégie le niveau choisi
-    let questionsNiveau = questionsDisponibles.filter(
-        question => question.niveau === niveau
-    );
+    let questionsNiveau =
+        questionsDisponibles.filter(
+            question => question.niveau === niveau
+        );
 
-    // S'il n'y en a pas assez, on utilise toutes les questions
     if (questionsNiveau.length === 0) {
-        questionsNiveau = questionsDisponibles;
+
+        questionsNiveau =
+            questionsDisponibles;
     }
 
-    quizQuestions = [...questionsNiveau]
+    quizQuestions =
+        [...questionsNiveau]
         .sort(() => Math.random() - 0.5);
 
     quizIndex = 0;
@@ -4425,9 +1320,10 @@ function commencerQuiz() {
 
     document.getElementById("messageQuiz").innerHTML = "";
 
-showPage("pageQuiz");
+    showPage("pageQuiz");
 
-afficherQuestionQuiz();
+    afficherQuestionQuiz();
+}
 
 
 // ===============================
@@ -4436,39 +1332,52 @@ afficherQuestionQuiz();
 
 function afficherQuestionQuiz() {
 
-   let zone = document.getElementById("zoneQuestionQuiz");
+    let zone =
+        document.getElementById("zoneQuestionQuiz");
 
     if (quizIndex >= quizQuestions.length) {
+
         terminerQuiz();
+
         return;
     }
 
-    let question = quizQuestions[quizIndex];
+    let question =
+        quizQuestions[quizIndex];
 
     let html = `
         <div class="card">
-            <h3>Question ${quizIndex + 1} / ${quizQuestions.length}</h3>
+
+            <h3>
+                Question ${quizIndex + 1}
+                /
+                ${quizQuestions.length}
+            </h3>
 
             <p>
-                <strong>${question.question}</strong>
+                <strong>
+                    ${question.question}
+                </strong>
             </p>
     `;
 
-    question.options.forEach((option, index) => {
+    question.options.forEach(
+        (option, index) => {
 
-        html += `
-            <button
-                class="action reponseQuiz"
-                onclick="repondreQuiz(${index})"
-            >
-                ${option}
-            </button>
-        `;
-
-    });
+            html += `
+                <button
+                    class="action reponseQuiz"
+                    onclick="repondreQuiz(${index})"
+                >
+                    ${option}
+                </button>
+            `;
+        }
+    );
 
     html += `
             <div id="feedbackQuiz" class="result"></div>
+
         </div>
     `;
 
@@ -4482,15 +1391,18 @@ function afficherQuestionQuiz() {
 
 function repondreQuiz(index) {
 
-    let question = quizQuestions[quizIndex];
+    let question =
+        quizQuestions[quizIndex];
 
-    let boutons = document.querySelectorAll(".reponseQuiz");
+    let boutons =
+        document.querySelectorAll(".reponseQuiz");
 
     boutons.forEach(button => {
         button.disabled = true;
     });
 
-    let feedback = document.getElementById("feedbackQuiz");
+    let feedback =
+        document.getElementById("feedbackQuiz");
 
     if (index === question.reponse) {
 
@@ -4503,14 +1415,19 @@ function repondreQuiz(index) {
 
         feedback.innerHTML =
             "❌ Mauvaise réponse.<br>" +
-            "La bonne réponse était : <strong>" +
+            "La bonne réponse était : " +
+            "<strong>" +
             question.options[question.reponse] +
             "</strong>";
     }
 
     feedback.innerHTML += `
         <br><br>
-        <button class="action" onclick="questionSuivante()">
+
+        <button
+            class="action"
+            onclick="questionSuivante()"
+        >
             ➡️ Question suivante
         </button>
     `;
@@ -4535,34 +1452,43 @@ function questionSuivante() {
 
 function terminerQuiz() {
 
-    let zone = document.getElementById("zoneQuestionQuiz");
+    let zone =
+        document.getElementById("zoneQuestionQuiz");
 
     let pourcentage =
-        Math.round((quizScore / quizQuestions.length) * 100);
+        Math.round(
+            (quizScore / quizQuestions.length) * 100
+        );
 
     zone.innerHTML = `
         <div class="card">
+
             <h3>🏆 Quiz terminé !</h3>
 
             <p>
                 Tu as obtenu
-                <strong>${quizScore} / ${quizQuestions.length}</strong>
+                <strong>
+                    ${quizScore} / ${quizQuestions.length}
+                </strong>
             </p>
 
             <p>
-                🌸 Score : <strong>${pourcentage}%</strong>
+                🌸 Score :
+                <strong>${pourcentage}%</strong>
             </p>
 
-           <button class="action" onclick="commencerQuiz()">
-    🚀 Commencer le quiz
+            <button
+                class="action"
+                onclick="commencerQuiz()"
+            >
                 🔄 Recommencer
             </button>
+
         </div>
     `;
 }
-}    
+
 </script>
 
 </body>
 </html>
-*
